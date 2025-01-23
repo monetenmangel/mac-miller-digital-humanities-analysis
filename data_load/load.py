@@ -106,18 +106,3 @@ class ScrapeSongs:
         df = pd.DataFrame(list(data.items()), columns=["URL", "Lyrics"])
         
         return df
-
-        
-# urls = ["https://genius.com/Mac-miller-100-grandkids-lyrics", "https://genius.com/Mac-miller-1-threw-8-lyrics", "https://genius.com/Mac-miller-2004-lyrics", "https://genius.com/Mac-miller-2009-lyrics"]
-# lyrics = ScrapeSongs.scrape_all_lyrics(urls)
-# print(lyrics["https://genius.com/Mac-miller-100-grandkids-lyrics"])
-
-# print(GeniusAPI.get_access_token())
-# token = GeniusAPI.get_access_token()
-# result = GeniusAPI.get_artist_songs(820, token)
-
-# print(result)
-
-# import json
-# with open("song_urls.json", "w") as file:
-#     json.dump(result, file)
