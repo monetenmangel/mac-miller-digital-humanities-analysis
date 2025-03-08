@@ -1,0 +1,924 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2023.1">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings>
+        <Position x="174" y="246" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings Macro="..\..\..\Spotify\GitHub\get_spotify_token.yxmc" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+        <Position x="174" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <NumRows value="1" />
+          <Fields>
+            <Field name="Get_Artist_albums_URL" />
+          </Fields>
+          <Data>
+            <r>
+              <c>https://api.spotify.com/v1/artists/4LLpKhyESsyAXpc4laK94U/albums</c>
+            </r>
+          </Data>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Artist URL</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+        <Position x="234" y="18" width="100" height="40" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Text>Spotify Artist ID Mac MIller: 4LLpKhyESsyAXpc4laK94U</Text>
+          <Font name="Arial" size="8.25" style="0" />
+          <TextColor name="Black" />
+          <FillColor name="White" />
+          <Shape shape="0" />
+          <Justification Justification="4" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AppendFields.AppendFields">
+        <Position x="270" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <CartesianMode>Error</CartesianMode>
+          <SelectConfiguration>
+            <Configuration outputConnection="Output">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxAppendFields" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxConnectorGui.Download.Download">
+        <Position x="366" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <URLField>Get_Artist_albums_URL</URLField>
+          <OutputMode>String</OutputMode>
+          <CodePage>65001</CodePage>
+          <EncodeURLs value="True" />
+          <Headers>
+            <NameValues />
+            <Fields orderChanged="False">
+              <Field name="Authorization" />
+              <Field name="Get_Artist_albums_URL" selected="False" />
+              <Field name="*Unknown" selected="False" />
+            </Fields>
+          </Headers>
+          <Payload>
+            <HTTPAction>GET</HTTPAction>
+            <QueryStringBodyMode>Compose</QueryStringBodyMode>
+            <ComposeNameValues />
+            <ComposeFields orderChanged="False">
+              <Field name="Get_Artist_albums_URL" selected="False" />
+              <Field name="Authorization" selected="False" />
+              <Field name="*Unknown" selected="False" />
+            </ComposeFields>
+          </Payload>
+          <numConnections>2</numConnections>
+          <Timeout>600</Timeout>
+          <EnableRPM value="False" />
+          <DcmAdvancedAuth value="False" />
+          <Password />
+          <UserName />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxConnectorEngine.dll" EngineDllEntryPoint="AlteryxDownload" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.JSONParse.JSONParse">
+        <Position x="558" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <JSON_Field>DownloadData</JSON_Field>
+          <IncludeInOutput value="False" />
+          <SingleField value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJSONParse" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="462" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="Authorization" selected="True" />
+            <SelectField field="DownloadData" selected="True" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="9">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.TextToColumns.TextToColumns">
+        <Position x="642" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Field>JSON_Name</Field>
+          <ErrorHandling>Last</ErrorHandling>
+          <RootName>
+          </RootName>
+          <Delimeters value="." />
+          <NumFields value="3" />
+          <Flags value="0" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextToColumns" />
+    </Node>
+    <Node ToolID="10">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="738" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="JSON_Name" selected="False" />
+            <SelectField field="1" selected="False" />
+            <SelectField field="2" selected="True" rename="number" />
+            <SelectField field="3" selected="True" rename="type" />
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="11">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="1026" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>IsNotNull</Operator>
+            <Field>number</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2025-03-08 13:32:38</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>name</Operand>
+              <StartDate>2025-03-08 13:32:38</StartDate>
+              <EndDate>2025-03-08 13:32:38</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>!IsNull([number])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="13">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+        <Position x="402" y="30" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <NumRows value="12" />
+          <Fields>
+            <Field name="Name" />
+            <Field name="Type" />
+          </Fields>
+          <Data>
+            <r>
+              <c>Balloonerism</c>
+              <c>Mixtape</c>
+            </r>
+            <r>
+              <c>Watching Movies with the Sound off</c>
+              <c>Album</c>
+            </r>
+            <r>
+              <c>I Love Life, Thank you</c>
+              <c>Mixtape</c>
+            </r>
+            <r>
+              <c>Faces</c>
+              <c>Mixtape</c>
+            </r>
+            <r>
+              <c>Circles</c>
+              <c>Album</c>
+            </r>
+            <r>
+              <c>Swimming</c>
+              <c>Album</c>
+            </r>
+            <r>
+              <c>The Divine Feminine</c>
+              <c>Album</c>
+            </r>
+            <r>
+              <c>Best Day Ever</c>
+              <c>Album</c>
+            </r>
+            <r>
+              <c>GO:OD AM</c>
+              <c>Album</c>
+            </r>
+            <r>
+              <c>Macadelic</c>
+              <c>Album</c>
+            </r>
+            <r>
+              <c>Blue Slide Park</c>
+              <c>Album</c>
+            </r>
+            <r>
+              <c>K.I.D.S</c>
+              <c>Album</c>
+            </r>
+          </Data>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+    </Node>
+    <Node ToolID="15">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.CrossTab.CrossTab">
+        <Position x="834" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <GroupFields>
+            <Field field="Authorization" />
+            <Field field="number" />
+          </GroupFields>
+          <HeaderField field="type" />
+          <DataField field="JSON_ValueString" />
+          <Methods>
+            <Method method="Concat" />
+            <Separator>,</Separator>
+            <FieldSize value="2048" />
+          </Methods>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Authorization" size="1073741823" source="CrossTab:Group:Concat:" type="V_WString" />
+            <Field description="TextToColumns: Parsed from JSON_Name" name="number" size="1073741823" source="CrossTab:Group:Concat:" type="V_WString" />
+            <Field name="_Null_" size="2048" source="CrossTab:Header:type:[Null]:Concat:" type="V_WString" />
+            <Field name="album_group" size="2048" source="CrossTab:Header:type:album_group:Concat:" type="V_WString" />
+            <Field name="album_type" size="2048" source="CrossTab:Header:type:album_type:Concat:" type="V_WString" />
+            <Field name="artists_0_external_urls_spotify" size="2048" source="CrossTab:Header:type:artists.0.external_urls.spotify:Concat:" type="V_WString" />
+            <Field name="artists_0_href" size="2048" source="CrossTab:Header:type:artists.0.href:Concat:" type="V_WString" />
+            <Field name="artists_0_id" size="2048" source="CrossTab:Header:type:artists.0.id:Concat:" type="V_WString" />
+            <Field name="artists_0_name" size="2048" source="CrossTab:Header:type:artists.0.name:Concat:" type="V_WString" />
+            <Field name="artists_0_type" size="2048" source="CrossTab:Header:type:artists.0.type:Concat:" type="V_WString" />
+            <Field name="artists_0_uri" size="2048" source="CrossTab:Header:type:artists.0.uri:Concat:" type="V_WString" />
+            <Field name="available_markets_0" size="2048" source="CrossTab:Header:type:available_markets.0:Concat:" type="V_WString" />
+            <Field name="available_markets_1" size="2048" source="CrossTab:Header:type:available_markets.1:Concat:" type="V_WString" />
+            <Field name="available_markets_2" size="2048" source="CrossTab:Header:type:available_markets.2:Concat:" type="V_WString" />
+            <Field name="available_markets_3" size="2048" source="CrossTab:Header:type:available_markets.3:Concat:" type="V_WString" />
+            <Field name="available_markets_4" size="2048" source="CrossTab:Header:type:available_markets.4:Concat:" type="V_WString" />
+            <Field name="available_markets_5" size="2048" source="CrossTab:Header:type:available_markets.5:Concat:" type="V_WString" />
+            <Field name="available_markets_6" size="2048" source="CrossTab:Header:type:available_markets.6:Concat:" type="V_WString" />
+            <Field name="available_markets_7" size="2048" source="CrossTab:Header:type:available_markets.7:Concat:" type="V_WString" />
+            <Field name="available_markets_8" size="2048" source="CrossTab:Header:type:available_markets.8:Concat:" type="V_WString" />
+            <Field name="available_markets_9" size="2048" source="CrossTab:Header:type:available_markets.9:Concat:" type="V_WString" />
+            <Field name="available_markets_10" size="2048" source="CrossTab:Header:type:available_markets.10:Concat:" type="V_WString" />
+            <Field name="available_markets_11" size="2048" source="CrossTab:Header:type:available_markets.11:Concat:" type="V_WString" />
+            <Field name="available_markets_12" size="2048" source="CrossTab:Header:type:available_markets.12:Concat:" type="V_WString" />
+            <Field name="available_markets_13" size="2048" source="CrossTab:Header:type:available_markets.13:Concat:" type="V_WString" />
+            <Field name="available_markets_14" size="2048" source="CrossTab:Header:type:available_markets.14:Concat:" type="V_WString" />
+            <Field name="available_markets_15" size="2048" source="CrossTab:Header:type:available_markets.15:Concat:" type="V_WString" />
+            <Field name="available_markets_16" size="2048" source="CrossTab:Header:type:available_markets.16:Concat:" type="V_WString" />
+            <Field name="available_markets_17" size="2048" source="CrossTab:Header:type:available_markets.17:Concat:" type="V_WString" />
+            <Field name="available_markets_18" size="2048" source="CrossTab:Header:type:available_markets.18:Concat:" type="V_WString" />
+            <Field name="available_markets_19" size="2048" source="CrossTab:Header:type:available_markets.19:Concat:" type="V_WString" />
+            <Field name="available_markets_20" size="2048" source="CrossTab:Header:type:available_markets.20:Concat:" type="V_WString" />
+            <Field name="available_markets_21" size="2048" source="CrossTab:Header:type:available_markets.21:Concat:" type="V_WString" />
+            <Field name="available_markets_22" size="2048" source="CrossTab:Header:type:available_markets.22:Concat:" type="V_WString" />
+            <Field name="available_markets_23" size="2048" source="CrossTab:Header:type:available_markets.23:Concat:" type="V_WString" />
+            <Field name="available_markets_24" size="2048" source="CrossTab:Header:type:available_markets.24:Concat:" type="V_WString" />
+            <Field name="available_markets_25" size="2048" source="CrossTab:Header:type:available_markets.25:Concat:" type="V_WString" />
+            <Field name="available_markets_26" size="2048" source="CrossTab:Header:type:available_markets.26:Concat:" type="V_WString" />
+            <Field name="available_markets_27" size="2048" source="CrossTab:Header:type:available_markets.27:Concat:" type="V_WString" />
+            <Field name="available_markets_28" size="2048" source="CrossTab:Header:type:available_markets.28:Concat:" type="V_WString" />
+            <Field name="available_markets_29" size="2048" source="CrossTab:Header:type:available_markets.29:Concat:" type="V_WString" />
+            <Field name="available_markets_30" size="2048" source="CrossTab:Header:type:available_markets.30:Concat:" type="V_WString" />
+            <Field name="available_markets_31" size="2048" source="CrossTab:Header:type:available_markets.31:Concat:" type="V_WString" />
+            <Field name="available_markets_32" size="2048" source="CrossTab:Header:type:available_markets.32:Concat:" type="V_WString" />
+            <Field name="available_markets_33" size="2048" source="CrossTab:Header:type:available_markets.33:Concat:" type="V_WString" />
+            <Field name="available_markets_34" size="2048" source="CrossTab:Header:type:available_markets.34:Concat:" type="V_WString" />
+            <Field name="available_markets_35" size="2048" source="CrossTab:Header:type:available_markets.35:Concat:" type="V_WString" />
+            <Field name="available_markets_36" size="2048" source="CrossTab:Header:type:available_markets.36:Concat:" type="V_WString" />
+            <Field name="available_markets_37" size="2048" source="CrossTab:Header:type:available_markets.37:Concat:" type="V_WString" />
+            <Field name="available_markets_38" size="2048" source="CrossTab:Header:type:available_markets.38:Concat:" type="V_WString" />
+            <Field name="available_markets_39" size="2048" source="CrossTab:Header:type:available_markets.39:Concat:" type="V_WString" />
+            <Field name="available_markets_40" size="2048" source="CrossTab:Header:type:available_markets.40:Concat:" type="V_WString" />
+            <Field name="available_markets_41" size="2048" source="CrossTab:Header:type:available_markets.41:Concat:" type="V_WString" />
+            <Field name="available_markets_42" size="2048" source="CrossTab:Header:type:available_markets.42:Concat:" type="V_WString" />
+            <Field name="available_markets_43" size="2048" source="CrossTab:Header:type:available_markets.43:Concat:" type="V_WString" />
+            <Field name="available_markets_44" size="2048" source="CrossTab:Header:type:available_markets.44:Concat:" type="V_WString" />
+            <Field name="available_markets_45" size="2048" source="CrossTab:Header:type:available_markets.45:Concat:" type="V_WString" />
+            <Field name="available_markets_46" size="2048" source="CrossTab:Header:type:available_markets.46:Concat:" type="V_WString" />
+            <Field name="available_markets_47" size="2048" source="CrossTab:Header:type:available_markets.47:Concat:" type="V_WString" />
+            <Field name="available_markets_48" size="2048" source="CrossTab:Header:type:available_markets.48:Concat:" type="V_WString" />
+            <Field name="available_markets_49" size="2048" source="CrossTab:Header:type:available_markets.49:Concat:" type="V_WString" />
+            <Field name="available_markets_50" size="2048" source="CrossTab:Header:type:available_markets.50:Concat:" type="V_WString" />
+            <Field name="available_markets_51" size="2048" source="CrossTab:Header:type:available_markets.51:Concat:" type="V_WString" />
+            <Field name="available_markets_52" size="2048" source="CrossTab:Header:type:available_markets.52:Concat:" type="V_WString" />
+            <Field name="available_markets_53" size="2048" source="CrossTab:Header:type:available_markets.53:Concat:" type="V_WString" />
+            <Field name="available_markets_54" size="2048" source="CrossTab:Header:type:available_markets.54:Concat:" type="V_WString" />
+            <Field name="available_markets_55" size="2048" source="CrossTab:Header:type:available_markets.55:Concat:" type="V_WString" />
+            <Field name="available_markets_56" size="2048" source="CrossTab:Header:type:available_markets.56:Concat:" type="V_WString" />
+            <Field name="available_markets_57" size="2048" source="CrossTab:Header:type:available_markets.57:Concat:" type="V_WString" />
+            <Field name="available_markets_58" size="2048" source="CrossTab:Header:type:available_markets.58:Concat:" type="V_WString" />
+            <Field name="available_markets_59" size="2048" source="CrossTab:Header:type:available_markets.59:Concat:" type="V_WString" />
+            <Field name="available_markets_60" size="2048" source="CrossTab:Header:type:available_markets.60:Concat:" type="V_WString" />
+            <Field name="available_markets_61" size="2048" source="CrossTab:Header:type:available_markets.61:Concat:" type="V_WString" />
+            <Field name="available_markets_62" size="2048" source="CrossTab:Header:type:available_markets.62:Concat:" type="V_WString" />
+            <Field name="available_markets_63" size="2048" source="CrossTab:Header:type:available_markets.63:Concat:" type="V_WString" />
+            <Field name="available_markets_64" size="2048" source="CrossTab:Header:type:available_markets.64:Concat:" type="V_WString" />
+            <Field name="available_markets_65" size="2048" source="CrossTab:Header:type:available_markets.65:Concat:" type="V_WString" />
+            <Field name="available_markets_66" size="2048" source="CrossTab:Header:type:available_markets.66:Concat:" type="V_WString" />
+            <Field name="available_markets_67" size="2048" source="CrossTab:Header:type:available_markets.67:Concat:" type="V_WString" />
+            <Field name="available_markets_68" size="2048" source="CrossTab:Header:type:available_markets.68:Concat:" type="V_WString" />
+            <Field name="available_markets_69" size="2048" source="CrossTab:Header:type:available_markets.69:Concat:" type="V_WString" />
+            <Field name="available_markets_70" size="2048" source="CrossTab:Header:type:available_markets.70:Concat:" type="V_WString" />
+            <Field name="available_markets_71" size="2048" source="CrossTab:Header:type:available_markets.71:Concat:" type="V_WString" />
+            <Field name="available_markets_72" size="2048" source="CrossTab:Header:type:available_markets.72:Concat:" type="V_WString" />
+            <Field name="available_markets_73" size="2048" source="CrossTab:Header:type:available_markets.73:Concat:" type="V_WString" />
+            <Field name="available_markets_74" size="2048" source="CrossTab:Header:type:available_markets.74:Concat:" type="V_WString" />
+            <Field name="available_markets_75" size="2048" source="CrossTab:Header:type:available_markets.75:Concat:" type="V_WString" />
+            <Field name="available_markets_76" size="2048" source="CrossTab:Header:type:available_markets.76:Concat:" type="V_WString" />
+            <Field name="available_markets_77" size="2048" source="CrossTab:Header:type:available_markets.77:Concat:" type="V_WString" />
+            <Field name="available_markets_78" size="2048" source="CrossTab:Header:type:available_markets.78:Concat:" type="V_WString" />
+            <Field name="available_markets_79" size="2048" source="CrossTab:Header:type:available_markets.79:Concat:" type="V_WString" />
+            <Field name="available_markets_80" size="2048" source="CrossTab:Header:type:available_markets.80:Concat:" type="V_WString" />
+            <Field name="available_markets_81" size="2048" source="CrossTab:Header:type:available_markets.81:Concat:" type="V_WString" />
+            <Field name="available_markets_82" size="2048" source="CrossTab:Header:type:available_markets.82:Concat:" type="V_WString" />
+            <Field name="available_markets_83" size="2048" source="CrossTab:Header:type:available_markets.83:Concat:" type="V_WString" />
+            <Field name="available_markets_84" size="2048" source="CrossTab:Header:type:available_markets.84:Concat:" type="V_WString" />
+            <Field name="available_markets_85" size="2048" source="CrossTab:Header:type:available_markets.85:Concat:" type="V_WString" />
+            <Field name="available_markets_86" size="2048" source="CrossTab:Header:type:available_markets.86:Concat:" type="V_WString" />
+            <Field name="available_markets_87" size="2048" source="CrossTab:Header:type:available_markets.87:Concat:" type="V_WString" />
+            <Field name="available_markets_88" size="2048" source="CrossTab:Header:type:available_markets.88:Concat:" type="V_WString" />
+            <Field name="available_markets_89" size="2048" source="CrossTab:Header:type:available_markets.89:Concat:" type="V_WString" />
+            <Field name="available_markets_90" size="2048" source="CrossTab:Header:type:available_markets.90:Concat:" type="V_WString" />
+            <Field name="available_markets_91" size="2048" source="CrossTab:Header:type:available_markets.91:Concat:" type="V_WString" />
+            <Field name="available_markets_92" size="2048" source="CrossTab:Header:type:available_markets.92:Concat:" type="V_WString" />
+            <Field name="available_markets_93" size="2048" source="CrossTab:Header:type:available_markets.93:Concat:" type="V_WString" />
+            <Field name="available_markets_94" size="2048" source="CrossTab:Header:type:available_markets.94:Concat:" type="V_WString" />
+            <Field name="available_markets_95" size="2048" source="CrossTab:Header:type:available_markets.95:Concat:" type="V_WString" />
+            <Field name="available_markets_96" size="2048" source="CrossTab:Header:type:available_markets.96:Concat:" type="V_WString" />
+            <Field name="available_markets_97" size="2048" source="CrossTab:Header:type:available_markets.97:Concat:" type="V_WString" />
+            <Field name="available_markets_98" size="2048" source="CrossTab:Header:type:available_markets.98:Concat:" type="V_WString" />
+            <Field name="available_markets_99" size="2048" source="CrossTab:Header:type:available_markets.99:Concat:" type="V_WString" />
+            <Field name="available_markets_100" size="2048" source="CrossTab:Header:type:available_markets.100:Concat:" type="V_WString" />
+            <Field name="available_markets_101" size="2048" source="CrossTab:Header:type:available_markets.101:Concat:" type="V_WString" />
+            <Field name="available_markets_102" size="2048" source="CrossTab:Header:type:available_markets.102:Concat:" type="V_WString" />
+            <Field name="available_markets_103" size="2048" source="CrossTab:Header:type:available_markets.103:Concat:" type="V_WString" />
+            <Field name="available_markets_104" size="2048" source="CrossTab:Header:type:available_markets.104:Concat:" type="V_WString" />
+            <Field name="available_markets_105" size="2048" source="CrossTab:Header:type:available_markets.105:Concat:" type="V_WString" />
+            <Field name="available_markets_106" size="2048" source="CrossTab:Header:type:available_markets.106:Concat:" type="V_WString" />
+            <Field name="available_markets_107" size="2048" source="CrossTab:Header:type:available_markets.107:Concat:" type="V_WString" />
+            <Field name="available_markets_108" size="2048" source="CrossTab:Header:type:available_markets.108:Concat:" type="V_WString" />
+            <Field name="available_markets_109" size="2048" source="CrossTab:Header:type:available_markets.109:Concat:" type="V_WString" />
+            <Field name="available_markets_110" size="2048" source="CrossTab:Header:type:available_markets.110:Concat:" type="V_WString" />
+            <Field name="available_markets_111" size="2048" source="CrossTab:Header:type:available_markets.111:Concat:" type="V_WString" />
+            <Field name="available_markets_112" size="2048" source="CrossTab:Header:type:available_markets.112:Concat:" type="V_WString" />
+            <Field name="available_markets_113" size="2048" source="CrossTab:Header:type:available_markets.113:Concat:" type="V_WString" />
+            <Field name="available_markets_114" size="2048" source="CrossTab:Header:type:available_markets.114:Concat:" type="V_WString" />
+            <Field name="available_markets_115" size="2048" source="CrossTab:Header:type:available_markets.115:Concat:" type="V_WString" />
+            <Field name="available_markets_116" size="2048" source="CrossTab:Header:type:available_markets.116:Concat:" type="V_WString" />
+            <Field name="available_markets_117" size="2048" source="CrossTab:Header:type:available_markets.117:Concat:" type="V_WString" />
+            <Field name="available_markets_118" size="2048" source="CrossTab:Header:type:available_markets.118:Concat:" type="V_WString" />
+            <Field name="available_markets_119" size="2048" source="CrossTab:Header:type:available_markets.119:Concat:" type="V_WString" />
+            <Field name="available_markets_120" size="2048" source="CrossTab:Header:type:available_markets.120:Concat:" type="V_WString" />
+            <Field name="available_markets_121" size="2048" source="CrossTab:Header:type:available_markets.121:Concat:" type="V_WString" />
+            <Field name="available_markets_122" size="2048" source="CrossTab:Header:type:available_markets.122:Concat:" type="V_WString" />
+            <Field name="available_markets_123" size="2048" source="CrossTab:Header:type:available_markets.123:Concat:" type="V_WString" />
+            <Field name="available_markets_124" size="2048" source="CrossTab:Header:type:available_markets.124:Concat:" type="V_WString" />
+            <Field name="available_markets_125" size="2048" source="CrossTab:Header:type:available_markets.125:Concat:" type="V_WString" />
+            <Field name="available_markets_126" size="2048" source="CrossTab:Header:type:available_markets.126:Concat:" type="V_WString" />
+            <Field name="available_markets_127" size="2048" source="CrossTab:Header:type:available_markets.127:Concat:" type="V_WString" />
+            <Field name="available_markets_128" size="2048" source="CrossTab:Header:type:available_markets.128:Concat:" type="V_WString" />
+            <Field name="available_markets_129" size="2048" source="CrossTab:Header:type:available_markets.129:Concat:" type="V_WString" />
+            <Field name="available_markets_130" size="2048" source="CrossTab:Header:type:available_markets.130:Concat:" type="V_WString" />
+            <Field name="available_markets_131" size="2048" source="CrossTab:Header:type:available_markets.131:Concat:" type="V_WString" />
+            <Field name="available_markets_132" size="2048" source="CrossTab:Header:type:available_markets.132:Concat:" type="V_WString" />
+            <Field name="available_markets_133" size="2048" source="CrossTab:Header:type:available_markets.133:Concat:" type="V_WString" />
+            <Field name="available_markets_134" size="2048" source="CrossTab:Header:type:available_markets.134:Concat:" type="V_WString" />
+            <Field name="available_markets_135" size="2048" source="CrossTab:Header:type:available_markets.135:Concat:" type="V_WString" />
+            <Field name="available_markets_136" size="2048" source="CrossTab:Header:type:available_markets.136:Concat:" type="V_WString" />
+            <Field name="available_markets_137" size="2048" source="CrossTab:Header:type:available_markets.137:Concat:" type="V_WString" />
+            <Field name="available_markets_138" size="2048" source="CrossTab:Header:type:available_markets.138:Concat:" type="V_WString" />
+            <Field name="available_markets_139" size="2048" source="CrossTab:Header:type:available_markets.139:Concat:" type="V_WString" />
+            <Field name="available_markets_140" size="2048" source="CrossTab:Header:type:available_markets.140:Concat:" type="V_WString" />
+            <Field name="available_markets_141" size="2048" source="CrossTab:Header:type:available_markets.141:Concat:" type="V_WString" />
+            <Field name="available_markets_142" size="2048" source="CrossTab:Header:type:available_markets.142:Concat:" type="V_WString" />
+            <Field name="available_markets_143" size="2048" source="CrossTab:Header:type:available_markets.143:Concat:" type="V_WString" />
+            <Field name="available_markets_144" size="2048" source="CrossTab:Header:type:available_markets.144:Concat:" type="V_WString" />
+            <Field name="available_markets_145" size="2048" source="CrossTab:Header:type:available_markets.145:Concat:" type="V_WString" />
+            <Field name="available_markets_146" size="2048" source="CrossTab:Header:type:available_markets.146:Concat:" type="V_WString" />
+            <Field name="available_markets_147" size="2048" source="CrossTab:Header:type:available_markets.147:Concat:" type="V_WString" />
+            <Field name="available_markets_148" size="2048" source="CrossTab:Header:type:available_markets.148:Concat:" type="V_WString" />
+            <Field name="available_markets_149" size="2048" source="CrossTab:Header:type:available_markets.149:Concat:" type="V_WString" />
+            <Field name="available_markets_150" size="2048" source="CrossTab:Header:type:available_markets.150:Concat:" type="V_WString" />
+            <Field name="available_markets_151" size="2048" source="CrossTab:Header:type:available_markets.151:Concat:" type="V_WString" />
+            <Field name="available_markets_152" size="2048" source="CrossTab:Header:type:available_markets.152:Concat:" type="V_WString" />
+            <Field name="available_markets_153" size="2048" source="CrossTab:Header:type:available_markets.153:Concat:" type="V_WString" />
+            <Field name="available_markets_154" size="2048" source="CrossTab:Header:type:available_markets.154:Concat:" type="V_WString" />
+            <Field name="available_markets_155" size="2048" source="CrossTab:Header:type:available_markets.155:Concat:" type="V_WString" />
+            <Field name="available_markets_156" size="2048" source="CrossTab:Header:type:available_markets.156:Concat:" type="V_WString" />
+            <Field name="available_markets_157" size="2048" source="CrossTab:Header:type:available_markets.157:Concat:" type="V_WString" />
+            <Field name="available_markets_158" size="2048" source="CrossTab:Header:type:available_markets.158:Concat:" type="V_WString" />
+            <Field name="available_markets_159" size="2048" source="CrossTab:Header:type:available_markets.159:Concat:" type="V_WString" />
+            <Field name="available_markets_160" size="2048" source="CrossTab:Header:type:available_markets.160:Concat:" type="V_WString" />
+            <Field name="available_markets_161" size="2048" source="CrossTab:Header:type:available_markets.161:Concat:" type="V_WString" />
+            <Field name="available_markets_162" size="2048" source="CrossTab:Header:type:available_markets.162:Concat:" type="V_WString" />
+            <Field name="available_markets_163" size="2048" source="CrossTab:Header:type:available_markets.163:Concat:" type="V_WString" />
+            <Field name="available_markets_164" size="2048" source="CrossTab:Header:type:available_markets.164:Concat:" type="V_WString" />
+            <Field name="available_markets_165" size="2048" source="CrossTab:Header:type:available_markets.165:Concat:" type="V_WString" />
+            <Field name="available_markets_166" size="2048" source="CrossTab:Header:type:available_markets.166:Concat:" type="V_WString" />
+            <Field name="available_markets_167" size="2048" source="CrossTab:Header:type:available_markets.167:Concat:" type="V_WString" />
+            <Field name="available_markets_168" size="2048" source="CrossTab:Header:type:available_markets.168:Concat:" type="V_WString" />
+            <Field name="available_markets_169" size="2048" source="CrossTab:Header:type:available_markets.169:Concat:" type="V_WString" />
+            <Field name="available_markets_170" size="2048" source="CrossTab:Header:type:available_markets.170:Concat:" type="V_WString" />
+            <Field name="available_markets_171" size="2048" source="CrossTab:Header:type:available_markets.171:Concat:" type="V_WString" />
+            <Field name="available_markets_172" size="2048" source="CrossTab:Header:type:available_markets.172:Concat:" type="V_WString" />
+            <Field name="available_markets_173" size="2048" source="CrossTab:Header:type:available_markets.173:Concat:" type="V_WString" />
+            <Field name="available_markets_174" size="2048" source="CrossTab:Header:type:available_markets.174:Concat:" type="V_WString" />
+            <Field name="available_markets_175" size="2048" source="CrossTab:Header:type:available_markets.175:Concat:" type="V_WString" />
+            <Field name="available_markets_176" size="2048" source="CrossTab:Header:type:available_markets.176:Concat:" type="V_WString" />
+            <Field name="available_markets_177" size="2048" source="CrossTab:Header:type:available_markets.177:Concat:" type="V_WString" />
+            <Field name="available_markets_178" size="2048" source="CrossTab:Header:type:available_markets.178:Concat:" type="V_WString" />
+            <Field name="available_markets_179" size="2048" source="CrossTab:Header:type:available_markets.179:Concat:" type="V_WString" />
+            <Field name="available_markets_180" size="2048" source="CrossTab:Header:type:available_markets.180:Concat:" type="V_WString" />
+            <Field name="available_markets_181" size="2048" source="CrossTab:Header:type:available_markets.181:Concat:" type="V_WString" />
+            <Field name="available_markets_182" size="2048" source="CrossTab:Header:type:available_markets.182:Concat:" type="V_WString" />
+            <Field name="available_markets_183" size="2048" source="CrossTab:Header:type:available_markets.183:Concat:" type="V_WString" />
+            <Field name="available_markets_184" size="2048" source="CrossTab:Header:type:available_markets.184:Concat:" type="V_WString" />
+            <Field name="external_urls_spotify" size="2048" source="CrossTab:Header:type:external_urls.spotify:Concat:" type="V_WString" />
+            <Field name="href" size="2048" source="CrossTab:Header:type:href:Concat:" type="V_WString" />
+            <Field name="id" size="2048" source="CrossTab:Header:type:id:Concat:" type="V_WString" />
+            <Field name="images_0_height" size="2048" source="CrossTab:Header:type:images.0.height:Concat:" type="V_WString" />
+            <Field name="images_0_url" size="2048" source="CrossTab:Header:type:images.0.url:Concat:" type="V_WString" />
+            <Field name="images_0_width" size="2048" source="CrossTab:Header:type:images.0.width:Concat:" type="V_WString" />
+            <Field name="images_1_height" size="2048" source="CrossTab:Header:type:images.1.height:Concat:" type="V_WString" />
+            <Field name="images_1_url" size="2048" source="CrossTab:Header:type:images.1.url:Concat:" type="V_WString" />
+            <Field name="images_1_width" size="2048" source="CrossTab:Header:type:images.1.width:Concat:" type="V_WString" />
+            <Field name="images_2_height" size="2048" source="CrossTab:Header:type:images.2.height:Concat:" type="V_WString" />
+            <Field name="images_2_url" size="2048" source="CrossTab:Header:type:images.2.url:Concat:" type="V_WString" />
+            <Field name="images_2_width" size="2048" source="CrossTab:Header:type:images.2.width:Concat:" type="V_WString" />
+            <Field name="name" size="2048" source="CrossTab:Header:type:name:Concat:" type="V_WString" />
+            <Field name="release_date" size="2048" source="CrossTab:Header:type:release_date:Concat:" type="V_WString" />
+            <Field name="release_date_precision" size="2048" source="CrossTab:Header:type:release_date_precision:Concat:" type="V_WString" />
+            <Field name="total_tracks" size="2048" source="CrossTab:Header:type:total_tracks:Concat:" type="V_WString" />
+            <Field name="type" size="2048" source="CrossTab:Header:type:type:Concat:" type="V_WString" />
+            <Field name="uri" size="2048" source="CrossTab:Header:type:uri:Concat:" type="V_WString" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxCrossTab" />
+    </Node>
+    <Node ToolID="16">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="930" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="Authorization" selected="True" />
+            <SelectField field="number" selected="True" />
+            <SelectField field="id" selected="True" />
+            <SelectField field="name" selected="True" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="18">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="1134" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="&quot;https://api.spotify.com/v1/albums/&quot; +[id] + &quot;/tracks&quot;&#xA;" field="Album_tracks_url" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText><![CDATA[Album_tracks_url = "https://api.spotify.com/v1/albums/" +[id] + "/tracks"
+
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="19">
+      <GuiSettings Plugin="AlteryxConnectorGui.Download.Download">
+        <Position x="1230" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <URLField>Album_tracks_url</URLField>
+          <OutputMode>String</OutputMode>
+          <CodePage>65001</CodePage>
+          <EncodeURLs value="True" />
+          <Headers>
+            <NameValues />
+            <Fields orderChanged="False">
+              <Field name="Authorization" />
+              <Field name="number" selected="False" />
+              <Field name="id" selected="False" />
+              <Field name="name" selected="False" />
+              <Field name="Album_tracks_url" selected="False" />
+              <Field name="*Unknown" selected="False" />
+            </Fields>
+          </Headers>
+          <Payload>
+            <HTTPAction>GET</HTTPAction>
+            <QueryStringBodyMode>Compose</QueryStringBodyMode>
+            <ComposeNameValues />
+            <ComposeFields orderChanged="False">
+              <Field name="Authorization" selected="False" />
+              <Field name="number" selected="False" />
+              <Field name="id" selected="False" />
+              <Field name="name" selected="False" />
+              <Field name="Album_tracks_url" selected="False" />
+              <Field name="*Unknown" selected="False" />
+            </ComposeFields>
+          </Payload>
+          <numConnections>2</numConnections>
+          <Timeout>600</Timeout>
+          <EnableRPM value="False" />
+          <DcmAdvancedAuth value="False" />
+          <Password />
+          <UserName />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxConnectorEngine.dll" EngineDllEntryPoint="AlteryxDownload" />
+    </Node>
+    <Node ToolID="20">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.JSONParse.JSONParse">
+        <Position x="1326" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <JSON_Field>DownloadData</JSON_Field>
+          <IncludeInOutput value="False" />
+          <SingleField value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJSONParse" />
+    </Node>
+    <Node ToolID="21">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="1446" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="name" selected="True" />
+            <SelectField field="JSON_Name" selected="True" />
+            <SelectField field="JSON_ValueString" selected="True" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="24">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.TextToColumns.TextToColumns">
+        <Position x="1542" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Field>JSON_Name</Field>
+          <ErrorHandling>Last</ErrorHandling>
+          <RootName>JSON_Name</RootName>
+          <Delimeters value="." />
+          <NumFields value="4" />
+          <Flags value="0" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextToColumns" />
+    </Node>
+    <Node ToolID="25">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="1638" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>=</Operator>
+            <Field>JSON_Name3</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2025-03-08 13:47:21</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>name</Operand>
+              <StartDate>2025-03-08 13:47:21</StartDate>
+              <EndDate>2025-03-08 13:47:21</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>[JSON_Name3] = "name"</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="26">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="1722" y="126" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="name" selected="True" rename="album_name" />
+            <SelectField field="JSON_ValueString" selected="True" rename="track_name" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="27">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="1842" y="126" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="0">C:\Users\BenMangel\OneDrive - The Information Lab GmbH\Private_Projekte\Mac Miller\mac-miller-digital-humanities-analysis\output\album_and_tracks_all_spotify.csv</File>
+          <Passwords />
+          <Disable>False</Disable>
+          <FormatSpecificOptions>
+            <LineEndStyle>CRLF</LineEndStyle>
+            <Delimeter>,</Delimeter>
+            <ForceQuotes>False</ForceQuotes>
+            <HeaderRow>True</HeaderRow>
+            <CodePage>28591</CodePage>
+            <WriteBOM>True</WriteBOM>
+          </FormatSpecificOptions>
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>album_and_tracks_all_spotify.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="OAuth" />
+      <Destination ToolID="4" Connection="Source" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="4" Connection="Targets" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="9" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="9" Connection="Output" />
+      <Destination ToolID="10" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="Output" />
+      <Destination ToolID="15" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="11" Connection="True" />
+      <Destination ToolID="18" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="15" Connection="Output" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="Output" />
+      <Destination ToolID="11" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="Output" />
+      <Destination ToolID="19" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="19" Connection="Output" />
+      <Destination ToolID="20" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="20" Connection="Output" />
+      <Destination ToolID="21" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="21" Connection="Output" />
+      <Destination ToolID="24" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="24" Connection="Output" />
+      <Destination ToolID="25" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="25" Connection="True" />
+      <Destination ToolID="26" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="26" Connection="Output" />
+      <Destination ToolID="27" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="False" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>get_tracklist</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="1a1ec285-3d3f-4bb9-8b0d-166c0c4e0bdf" />
+      <Telemetry>
+        <PreviousWorkflowId value="5ffadebc-3a16-4298-9bb3-b9306f9a9b26" />
+        <OriginWorkflowId value="5ffadebc-3a16-4298-9bb3-b9306f9a9b26" />
+      </Telemetry>
+      <PlatformWorkflowId value="" />
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
