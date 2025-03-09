@@ -219,16 +219,38 @@
           <named-connection caption='viz_data_20250309_122846' name='textscan.0eicprl1iv8qjp16mhr2a0ptwxda'>
             <connection class='textscan' directory='C:/Users/BenMangel/OneDrive - The Information Lab GmbH/Private_Projekte/Mac Miller/mac-miller-digital-humanities-analysis/analysis_results' filename='viz_data_20250309_122846.csv' password='' server='' />
           </named-connection>
+          <named-connection caption='album_release_year' name='textscan.1crbovd0yi4i1b1grm07w1mnvcvx'>
+            <connection class='textscan' directory='C:/Users/BenMangel/OneDrive - The Information Lab GmbH/Private_Projekte/Mac Miller/mac-miller-digital-humanities-analysis/analysis' filename='album_release_year.csv' password='' server='' />
+          </named-connection>
         </named-connections>
-        <relation connection='textscan.0eicprl1iv8qjp16mhr2a0ptwxda' name='viz_data_20250309_122846.csv' table='[viz_data_20250309_122846#csv]' type='table'>
-          <columns character-set='UTF-8' header='yes' locale='en_GB' separator=','>
-            <column datatype='integer' name='release_year' ordinal='0' />
-            <column datatype='string' name='variable' ordinal='1' />
-            <column datatype='real' name='value' ordinal='2' />
-            <column datatype='datetime' name='timestamp' ordinal='3' />
-            <column datatype='string' name='script_name' ordinal='4' />
-          </columns>
+        <relation type='collection'>
+          <relation connection='textscan.0eicprl1iv8qjp16mhr2a0ptwxda' name='viz_data_20250309_122846.csv' table='[viz_data_20250309_122846#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_GB' separator=','>
+              <column datatype='integer' name='release_year' ordinal='0' />
+              <column datatype='string' name='variable' ordinal='1' />
+              <column datatype='real' name='value' ordinal='2' />
+              <column datatype='datetime' name='timestamp' ordinal='3' />
+              <column datatype='string' name='script_name' ordinal='4' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1crbovd0yi4i1b1grm07w1mnvcvx' name='album_release_year.csv' table='[album_release_year#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='de_DE'>
+              <column datatype='string' name='album_name' ordinal='0' />
+              <column datatype='integer' name='release_year' ordinal='1' />
+              <column datatype='string' name='album_name_short' ordinal='2' />
+            </columns>
+          </relation>
         </relation>
+        <cols>
+          <map key='[album_name]' value='[album_release_year.csv].[album_name]' />
+          <map key='[album_name_short]' value='[album_release_year.csv].[album_name_short]' />
+          <map key='[release_year (album_release_year.csv)]' value='[album_release_year.csv].[release_year]' />
+          <map key='[release_year]' value='[viz_data_20250309_122846.csv].[release_year]' />
+          <map key='[script_name]' value='[viz_data_20250309_122846.csv].[script_name]' />
+          <map key='[timestamp]' value='[viz_data_20250309_122846.csv].[timestamp]' />
+          <map key='[value]' value='[viz_data_20250309_122846.csv].[value]' />
+          <map key='[variable]' value='[viz_data_20250309_122846.csv].[variable]' />
+        </cols>
         <metadata-records>
           <metadata-record class='capability'>
             <remote-name />
@@ -245,6 +267,24 @@
               <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
               <attribute datatype='string' name='locale'>&quot;en_GB&quot;</attribute>
               <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[album_release_year.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;de&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;€&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;de_DE&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
             </attributes>
           </metadata-record>
           <metadata-record class='column'>
@@ -313,10 +353,56 @@
             <collation flag='0' name='LEN_RGB' />
             <object-id>[viz_data_20250309_122846.csv_37358D7696114585906886925597B417]</object-id>
           </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>album_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[album_name]</local-name>
+            <parent-name>[album_release_year.csv]</parent-name>
+            <remote-alias>album_name</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <object-id>[album_release_year.csv_D1927D5884AB4750A32C0D0FC5307E15]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>release_year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[release_year (album_release_year.csv)]</local-name>
+            <parent-name>[album_release_year.csv]</parent-name>
+            <remote-alias>release_year</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[album_release_year.csv_D1927D5884AB4750A32C0D0FC5307E15]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>album_name_short</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[album_name_short]</local-name>
+            <parent-name>[album_release_year.csv]</parent-name>
+            <remote-alias>album_name_short</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <object-id>[album_release_year.csv_D1927D5884AB4750A32C0D0FC5307E15]</object-id>
+          </metadata-record>
         </metadata-records>
       </connection>
       <aliases enabled='yes' />
+      <column caption='album_release_year.csv' datatype='table' name='[__tableau_internal_object_id__].[album_release_year.csv_D1927D5884AB4750A32C0D0FC5307E15]' role='measure' type='quantitative' />
       <column caption='viz_data_20250309_122846.csv' datatype='table' name='[__tableau_internal_object_id__].[viz_data_20250309_122846.csv_37358D7696114585906886925597B417]' role='measure' type='quantitative' />
+      <column caption='Album Name' datatype='string' name='[album_name]' role='dimension' type='nominal' />
+      <column caption='Album Name Short' datatype='string' name='[album_name_short]' role='dimension' type='nominal' />
+      <column caption='Release Year (Album Release Year.Csv)' datatype='integer' name='[release_year (album_release_year.csv)]' role='dimension' type='quantitative' />
       <column caption='Release Year' datatype='integer' name='[release_year]' role='dimension' type='ordinal' />
       <column caption='Script Name' datatype='string' name='[script_name]' role='dimension' type='nominal' />
       <column caption='Timestamp' datatype='datetime' name='[timestamp]' role='dimension' type='ordinal' />
@@ -329,6 +415,17 @@
       <date-options start-of-week='monday' />
       <object-graph>
         <objects>
+          <object caption='album_release_year.csv' id='album_release_year.csv_D1927D5884AB4750A32C0D0FC5307E15'>
+            <properties context=''>
+              <relation connection='textscan.1crbovd0yi4i1b1grm07w1mnvcvx' name='album_release_year.csv' table='[album_release_year#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='de_DE'>
+                  <column datatype='string' name='album_name' ordinal='0' />
+                  <column datatype='integer' name='release_year' ordinal='1' />
+                  <column datatype='string' name='album_name_short' ordinal='2' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
           <object caption='viz_data_20250309_122846.csv' id='viz_data_20250309_122846.csv_37358D7696114585906886925597B417'>
             <properties context=''>
               <relation connection='textscan.0eicprl1iv8qjp16mhr2a0ptwxda' name='viz_data_20250309_122846.csv' table='[viz_data_20250309_122846#csv]' type='table'>
@@ -343,6 +440,16 @@
             </properties>
           </object>
         </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[release_year]' />
+              <expression op='[release_year (album_release_year.csv)]' />
+            </expression>
+            <first-end-point object-id='viz_data_20250309_122846.csv_37358D7696114585906886925597B417' />
+            <second-end-point object-id='album_release_year.csv_D1927D5884AB4750A32C0D0FC5307E15' />
+          </relationship>
+        </relationships>
       </object-graph>
     </datasource>
   </datasources>
@@ -508,6 +615,8 @@
             <datasource caption='viz_data_20250309_122846' name='federated.0xrrbh20q4whbe11t11fr1jaodoi' />
           </datasources>
           <datasource-dependencies datasource='federated.0xrrbh20q4whbe11t11fr1jaodoi'>
+            <column caption='Album Name Short' datatype='string' name='[album_name_short]' role='dimension' type='nominal' />
+            <column-instance column='[album_name_short]' derivation='Attribute' name='[attr:album_name_short:nk]' pivot='key' type='nominal' />
             <column-instance column='[release_year]' derivation='None' name='[none:release_year:ok]' pivot='key' type='ordinal' />
             <column-instance column='[variable]' derivation='None' name='[none:variable:nk]' pivot='key' type='nominal' />
             <column caption='Release Year' datatype='integer' name='[release_year]' role='dimension' type='ordinal' />
@@ -526,6 +635,7 @@
             <mark class='Automatic' />
             <encodings>
               <color column='[federated.0xrrbh20q4whbe11t11fr1jaodoi].[none:variable:nk]' />
+              <tooltip column='[federated.0xrrbh20q4whbe11t11fr1jaodoi].[attr:album_name_short:nk]' />
             </encodings>
             <style>
               <style-rule element='mark'>
