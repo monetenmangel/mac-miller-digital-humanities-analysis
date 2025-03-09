@@ -1,0 +1,607 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20243.24.1211.0901                               -->
+<workbook original-version='18.1' source-build='2024.3.2 (20243.24.1211.0901)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='lyrics_per_word_with_metadata_clean' inline='true' name='federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='lyrics_per_word_with_metadata_clean' name='textscan.04dw40t1jnopw311vrbti1g2ylk2'>
+            <connection class='textscan' directory='C:/Users/BenMangel/OneDrive - The Information Lab GmbH/Private_Projekte/Mac Miller/mac-miller-digital-humanities-analysis/output' filename='lyrics_per_word_with_metadata_clean.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.04dw40t1jnopw311vrbti1g2ylk2' name='lyrics_per_word_with_metadata_clean.csv' table='[lyrics_per_word_with_metadata_clean#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='release_year' ordinal='0' />
+            <column datatype='string' name='album_name_short' ordinal='1' />
+            <column datatype='string' name='URL' ordinal='2' />
+            <column datatype='string' name='Lyrics' ordinal='3' />
+            <column datatype='string' name='track_name' ordinal='4' />
+            <column datatype='string' name='part_type' ordinal='5' />
+            <column datatype='string' name='feature_guest' ordinal='6' />
+            <column datatype='boolean' name='with_mac_miller?' ordinal='7' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[lyrics_per_word_with_metadata_clean.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>release_year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[release_year]</local-name>
+            <parent-name>[lyrics_per_word_with_metadata_clean.csv]</parent-name>
+            <remote-alias>release_year</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[lyrics_per_word_with_metadata_clean.csv_A81508B3AE6A47F7988E541ACF9D0989]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>album_name_short</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[album_name_short]</local-name>
+            <parent-name>[lyrics_per_word_with_metadata_clean.csv]</parent-name>
+            <remote-alias>album_name_short</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[lyrics_per_word_with_metadata_clean.csv_A81508B3AE6A47F7988E541ACF9D0989]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>URL</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[URL]</local-name>
+            <parent-name>[lyrics_per_word_with_metadata_clean.csv]</parent-name>
+            <remote-alias>URL</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[lyrics_per_word_with_metadata_clean.csv_A81508B3AE6A47F7988E541ACF9D0989]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Lyrics</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Lyrics]</local-name>
+            <parent-name>[lyrics_per_word_with_metadata_clean.csv]</parent-name>
+            <remote-alias>Lyrics</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[lyrics_per_word_with_metadata_clean.csv_A81508B3AE6A47F7988E541ACF9D0989]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>track_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[track_name]</local-name>
+            <parent-name>[lyrics_per_word_with_metadata_clean.csv]</parent-name>
+            <remote-alias>track_name</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[lyrics_per_word_with_metadata_clean.csv_A81508B3AE6A47F7988E541ACF9D0989]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>part_type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[part_type]</local-name>
+            <parent-name>[lyrics_per_word_with_metadata_clean.csv]</parent-name>
+            <remote-alias>part_type</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[lyrics_per_word_with_metadata_clean.csv_A81508B3AE6A47F7988E541ACF9D0989]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>feature_guest</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[feature_guest]</local-name>
+            <parent-name>[lyrics_per_word_with_metadata_clean.csv]</parent-name>
+            <remote-alias>feature_guest</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[lyrics_per_word_with_metadata_clean.csv_A81508B3AE6A47F7988E541ACF9D0989]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>with_mac_miller?</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[with_mac_miller?]</local-name>
+            <parent-name>[lyrics_per_word_with_metadata_clean.csv]</parent-name>
+            <remote-alias>with_mac_miller?</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[lyrics_per_word_with_metadata_clean.csv_A81508B3AE6A47F7988E541ACF9D0989]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='lyrics_per_word_with_metadata_clean.csv' datatype='table' name='[__tableau_internal_object_id__].[lyrics_per_word_with_metadata_clean.csv_A81508B3AE6A47F7988E541ACF9D0989]' role='measure' type='quantitative' />
+      <column caption='Track Name' datatype='string' name='[track_name]' role='dimension' type='nominal' />
+      <column caption='With Mac Miller?' datatype='boolean' name='[with_mac_miller?]' role='dimension' type='nominal' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Germany&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <object-graph>
+        <objects>
+          <object caption='lyrics_per_word_with_metadata_clean.csv' id='lyrics_per_word_with_metadata_clean.csv_A81508B3AE6A47F7988E541ACF9D0989'>
+            <properties context=''>
+              <relation connection='textscan.04dw40t1jnopw311vrbti1g2ylk2' name='lyrics_per_word_with_metadata_clean.csv' table='[lyrics_per_word_with_metadata_clean#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='integer' name='release_year' ordinal='0' />
+                  <column datatype='string' name='album_name_short' ordinal='1' />
+                  <column datatype='string' name='URL' ordinal='2' />
+                  <column datatype='string' name='Lyrics' ordinal='3' />
+                  <column datatype='string' name='track_name' ordinal='4' />
+                  <column datatype='string' name='part_type' ordinal='5' />
+                  <column datatype='string' name='feature_guest' ordinal='6' />
+                  <column datatype='boolean' name='with_mac_miller?' ordinal='7' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='# of Words on album and not'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{4730A246-EF6B-4FC2-9AF8-AD12649D86F8}' />
+    </worksheet>
+    <worksheet name='Avg no of words per track'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{9C1BEEAF-0702-48D9-ACD8-18C8A7283169}' />
+    </worksheet>
+    <worksheet name='Most Common words'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='lyrics_per_word_with_metadata_clean' name='federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw'>
+            <column datatype='string' name='[Lyrics]' role='dimension' type='nominal' />
+            <column-instance column='[Lyrics]' derivation='Count' name='[cnt:Lyrics:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Lyrics]' derivation='None' name='[none:Lyrics:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[none:Lyrics:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[cnt:Lyrics:qk]' shelf='rows' />
+          </shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[none:Lyrics:nk]</rows>
+        <cols>[federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[cnt:Lyrics:qk]</cols>
+      </table>
+      <simple-id uuid='{95CDAF46-ADCC-4349-9E6A-49968645DBA3}' />
+    </worksheet>
+    <worksheet name='no of distinct words'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{9036258C-39B8-460A-BEF8-C9427597C9E8}' />
+    </worksheet>
+    <worksheet name='total no words'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{F8CC4D64-D47C-4B5E-AA53-09CC2E7AAF34}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' name='Most Common words'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[none:Lyrics:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{19DE69F8-6D84-42DB-9B6A-FDDCA3E790D6}' />
+    </window>
+    <window class='worksheet' name='# of Words on album and not'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{D5CB227A-EFDB-43A2-9573-5FDA83044B04}' />
+    </window>
+    <window class='worksheet' name='Avg no of words per track'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{B5A9BB72-CB60-4057-8E90-57814B29D3F1}' />
+    </window>
+    <window class='worksheet' name='no of distinct words'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{60E83278-D943-4B1D-B064-3A68BFAB4137}' />
+    </window>
+    <window class='worksheet' maximized='true' name='total no words'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{17DE136C-8037-4BC8-96F1-12BC8742B8DB}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='# of Words on album and not' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAACFUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
+      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
+      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
+      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
+      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
+      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKR9Y+0F
+      fBUOM1sAAAAASUVORK5CYII=
+    </thumbnail>
+    <thumbnail height='192' name='Avg no of words per track' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAACFUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
+      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
+      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
+      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
+      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
+      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKR9Y+0F
+      fBUOM1sAAAAASUVORK5CYII=
+    </thumbnail>
+    <thumbnail height='192' name='Most Common words' width='192'>
+      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
+      oUQ6lgAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='no of distinct words' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAACFUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
+      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
+      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
+      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
+      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
+      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKR9Y+0F
+      fBUOM1sAAAAASUVORK5CYII=
+    </thumbnail>
+    <thumbnail height='192' name='total no words' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAACFUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
+      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
+      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
+      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
+      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
+      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKR9Y+0F
+      fBUOM1sAAAAASUVORK5CYII=
+    </thumbnail>
+  </thumbnails>
+</workbook>
