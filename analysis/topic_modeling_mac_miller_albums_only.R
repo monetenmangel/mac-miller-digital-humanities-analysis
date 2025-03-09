@@ -69,7 +69,8 @@ require(topicmodels)
 df_grouped <- df_stop_words_removed %>% 
   group_by(URL) %>% 
   summarise(text = paste(Lyrics, collapse = " "),
-            release_year = first(release_year))
+            release_year = first(release_year),
+            album_name_short = first(album_name_short))
 
 # Create corpus
 corpus <- corpus(df_grouped, text_field = "text")
@@ -90,14 +91,15 @@ dim(DTM)
 
 # LDA ----------
 
-K <- 10
+K <- 7
+alpha <- 0.02
 
 # compute LDA model, inference with n iterations of Gibbs sampling
 topicModel <- LDA(DTM, K, method = "Gibbs", control = list(
   iter = 500,
   seed = 1, 
   verbose = 25, 
-  alpha = 0.02))
+  alpha = alpha))
 
 # have a look at the results
 tmResult <- posterior(topicModel)
@@ -123,8 +125,8 @@ rowSums(theta)[1:10] # rows in theta sum to 1
 terms(topicModel, 10)
 
 # Give topics pseudo names
-top5termsPerTopic <- terms(topicModel, 5)
-topicNames <- apply(top5termsPerTopic, 2, paste, collapse = " ")
+topKtermsPerTopic <- terms(topicModel, K)
+topicNames <- apply(topKtermsPerTopic, 2, paste, collapse = " ")
 
 # VISUALIZATION
 # LDAvis browser
@@ -141,17 +143,17 @@ library(ggplot2)
 library(pals)
 
 # get mean topic proportions per decade
-topic_proportion_per_year <- aggregate(theta,
-                                       by = list(release_year = df_grouped$release_year),
+topic_proportion_per_album <- aggregate(theta,
+                                       by = list(album_name_short = df_grouped$album_name_short),
                                        mean)
 # Vergib den aggregierten Spalten die Pseudonamen der Topics
-colnames(topic_proportion_per_year)[2:(K+1)] <- topicNames
+colnames(topic_proportion_per_album)[2:(K+1)] <- topicNames
 
 # Reshape des Data Frames in ein langes Format
-vizDataFrame <- melt(topic_proportion_per_year, id.vars = "release_year")
+vizDataFrame <- melt(topic_proportion_per_album, id.vars = "album_name_short")
 
 # Plot der durchschnittlichen Topic-Anteile pro release_year
-ggplot(vizDataFrame, aes(x = as.factor(release_year), y = value, fill = variable)) +
+ggplot(vizDataFrame, aes(x = as.factor(album_name_short), y = value, fill = variable)) +
   geom_bar(stat = "identity") +
   ylab("Proportion") +
   scale_fill_manual(values = paste0(alphabet(20), "FF"), name = "Topic") +
@@ -163,34 +165,71 @@ ggplot(vizDataFrame, aes(x = as.factor(release_year), y = value, fill = variable
 # current timestamp
 timestamp <- Sys.time()
 
-# Get filename 
-
-script_path <- getActiveDocumentContext()$path
+# name and path of active script
+script_path <- rstudioapi::getActiveDocumentContext()$path
 script_name <- basename(script_path)
+
+# create run id
+run_id <- paste0(
+  tools::file_path_sans_ext(script_name),  # script w/o ".R"
+  "_K", K,
+  "_alpha", alpha,
+  "_", format(timestamp, "%Y%m%d_%H%M%S")
+)
+
+# Create Topics df
 
 # Extract topics
 topics_out <- terms(topicModel, 10)
 topics_df <- as.data.frame(topics_out, stringsAsFactors = FALSE)
 topics_df <- cbind(Topic = colnames(topics_out), topics_df)
 
-# Set output directory
-output_dir <- "analysis_results"
-if (!dir.exists(output_dir)) {
-  dir.create(output_dir)
+# add metadata to data frames
+topics_df$K       <- K
+topics_df$alpha   <- alpha
+topics_df$run_id  <- run_id
+
+vizDataFrame$K       <- K
+vizDataFrame$alpha   <- alpha
+vizDataFrame$run_id  <- run_id
+
+# Pivot topics_df
+
+# Rename "Topic" in "word_rank" bc otherwise we get confused with other
+# column names
+topics_df <- topics_df %>%
+  rename(topic_group = Topic)
+
+# Pivot every column with "Topic " in its name
+topics_long <- topics_df %>%
+  pivot_longer(
+    cols = starts_with("Topic "),   # alle Spalten, die "Topic " heißen
+    names_to = "topic_label",       # z. B. "Topic 1", "Topic 2", ...
+    values_to = "word"             # das sind die Top-Wörter
+  )
+
+# Save results
+# Create if not exist, otherwise union data to existing data
+
+append_to_csv <- function(df, csv_path) {
+  if (file.exists(csv_path)) {
+    # Datei existiert schon -> einlesen
+    existing_df <- read_csv(csv_path, show_col_types = FALSE)
+    # Zusammenführen
+    combined_df <- bind_rows(existing_df, df)
+    # Neue Tabelle überschreibt die alte
+    write_csv(combined_df, csv_path)
+    message("Daten an bestehende CSV angehängt: ", csv_path)
+  } else {
+    # CSV existiert noch nicht -> neu anlegen
+    write_csv(df, csv_path)
+    message("Neue CSV erstellt: ", csv_path)
+  }
 }
 
-# Erstelle einen Data Frame für die Metadaten
-metadata_df <- data.frame(
-  timestamp = format(timestamp, "%Y-%m-%d %H:%M:%S"),
-  script_name = script_name,
-  K = K,
-  stringsAsFactors = FALSE
-)
 
-# create a file with a timestamp
-output_file <- file.path(output_dir, paste0("lda_results_", format(timestamp, "%Y%m%d_%H%M%S"), ".rds"))
-saveRDS(metadata_list, file = output_file)
-
+append_to_csv(topics_long, "analysis_results/topics_long.csv")
+append_to_csv(vizDataFrame, "analysis_results/vizData_long.csv")
 
 
 
