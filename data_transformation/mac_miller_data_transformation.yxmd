@@ -38,7 +38,7 @@ Query=`lyrics$`</DefaultAnnotationText>
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\Users\BENMAN~1\AppData\Local\Temp\Engine_30968_34eff3684e969340ab565510baf5579f_\Engine_30968_05c2c0ab62bb6042a51b9d920d6873a0~.yxdb</TempFile>
+          <TempFile>C:\Users\BENMAN~1\AppData\Local\Temp\Engine_2920_20c245f8b84f3640a9709d0bd40fdfc5_\Engine_2920_94c48f7642e6f14384e48435b1fa51cd~.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>
@@ -97,6 +97,7 @@ Query=`lyrics$`</DefaultAnnotationText>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
+          <AnnotationText>Split by linebreak</AnnotationText>
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
@@ -109,7 +110,7 @@ Query=`lyrics$`</DefaultAnnotationText>
       </GuiSettings>
       <Properties>
         <Configuration>
-          <TempFile>C:\Users\BENMAN~1\AppData\Local\Temp\Engine_30968_34eff3684e969340ab565510baf5579f_\Engine_30968_d1fcb576cb71174e968d3eb8b5c08297~.yxdb</TempFile>
+          <TempFile>C:\Users\BENMAN~1\AppData\Local\Temp\Engine_2920_20c245f8b84f3640a9709d0bd40fdfc5_\Engine_2920_4498277edec29247ba8d372192ad153b~.yxdb</TempFile>
           <TempFileDataProfiling />
           <Layout>
             <ViewMode>Single</ViewMode>
@@ -144,6 +145,7 @@ Query=`lyrics$`</DefaultAnnotationText>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
+          <AnnotationText>Extract part of song: i.e. Intro, Part, Outro</AnnotationText>
           <DefaultAnnotationText>Part_of_song = if Contains([Lyrics], "[") then [Lyrics] else Null() endif
 Part_o...</DefaultAnnotationText>
           <Left value="False" />
@@ -169,6 +171,7 @@ Part_o...</DefaultAnnotationText>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
+          <AnnotationText>Fill empty lines for parts</AnnotationText>
           <DefaultAnnotationText>if isnull([Part_of_song]) then [Row-1:Part_of_song] else [Par...</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
@@ -192,14 +195,15 @@ Part_o...</DefaultAnnotationText>
               <PeriodType>
               </PeriodType>
               <PeriodCount>0</PeriodCount>
+              <Operand>[</Operand>
               <StartDate>2025-03-08 13:05:14</StartDate>
               <EndDate>2025-03-08 13:05:14</EndDate>
-              <Operand>[</Operand>
             </Operands>
           </Simple>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
+          <AnnotationText>Filter out, what is not lyrics</AnnotationText>
           <DefaultAnnotationText>!Contains([Lyrics],"[")</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
@@ -232,6 +236,7 @@ Part_o...</DefaultAnnotationText>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
+          <AnnotationText>Filter empty rows</AnnotationText>
           <DefaultAnnotationText>!IsEmpty([Lyrics])</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
@@ -251,6 +256,7 @@ Part_o...</DefaultAnnotationText>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
+          <AnnotationText>Split by \s</AnnotationText>
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
@@ -304,6 +310,7 @@ Part_o...</DefaultAnnotationText>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
+          <AnnotationText>Parse URL to extract song title</AnnotationText>
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
@@ -528,6 +535,7 @@ or Contains([track_name], "live in")</DefaultAnnotationText>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
+          <AnnotationText>Split by "(" bc Spotify keeps the feature gues in (). Genius does not, so we have to align these</AnnotationText>
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
@@ -568,6 +576,8 @@ or Contains([track_name], "live in")</DefaultAnnotationText>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
+          <AnnotationText><![CDATA[Replace double space
+]]></AnnotationText>
           <DefaultAnnotationText><![CDATA[track_without_feature = Replace([track_without_feature], "  ", " ")
 ]]></DefaultAnnotationText>
           <Left value="False" />
@@ -813,6 +823,7 @@ or Contains([track_name], "live in")</DefaultAnnotationText>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
+          <AnnotationText>Split to parse Feature guest from Part</AnnotationText>
           <DefaultAnnotationText />
           <Left value="False" />
         </Annotation>
@@ -848,12 +859,13 @@ or Contains([track_name], "live in")</DefaultAnnotationText>
       <Properties>
         <Configuration>
           <FormulaFields>
-            <FormulaField expression="if contains(LowerCase([mac_miller?]), &quot;mac miller&quot;) then -1 else 0 endif" field="with_mac_miller?" size="1" type="Bool" />
+            <FormulaField expression="if contains(LowerCase([mac_miller?]), &quot;mac miller&quot;) or IsEmpty([mac_miller?]) then -1 else 0 endif" field="with_mac_miller" size="1" type="Bool" />
           </FormulaFields>
         </Configuration>
         <Annotation DisplayMode="0">
           <Name />
-          <DefaultAnnotationText>with_mac_miller? = if contains(LowerCase([mac_miller?]), "mac miller") then -1 e...</DefaultAnnotationText>
+          <AnnotationText>When No feature guest or feature guest + mac miller: Lyric is by Mac Miller</AnnotationText>
+          <DefaultAnnotationText>with_mac_miller = if contains(LowerCase([mac_miller?]), "mac miller") or IsEmpty...</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
       </Properties>
@@ -925,7 +937,7 @@ or Contains([track_name], "live in")</DefaultAnnotationText>
     </Node>
     <Node ToolID="41">
       <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-        <Position x="2646" y="126" />
+        <Position x="3258" y="126" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -945,6 +957,315 @@ or Contains([track_name], "live in")</DefaultAnnotationText>
         <Annotation DisplayMode="0">
           <Name />
           <DefaultAnnotationText>lyrics_per_word_with_metadata_clean.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+    <Node ToolID="45">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+        <Position x="2442" y="6" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <NumRows value="18" />
+          <Fields>
+            <Field name="album_name" />
+            <Field name="release_year" />
+            <Field name="album_name_short" />
+          </Fields>
+          <Data>
+            <r>
+              <c>Watching Movies with the Sound Off</c>
+              <c>2013</c>
+              <c>Watching Movies with the Sound Off</c>
+            </r>
+            <r>
+              <c>Swimming</c>
+              <c>2018</c>
+              <c>Swimming</c>
+            </r>
+            <r>
+              <c>Balloonerism</c>
+              <c>2014</c>
+              <c>Balloonerism</c>
+            </r>
+            <r>
+              <c>GO:OD AM</c>
+              <c>2015</c>
+              <c>GO:OD AM</c>
+            </r>
+            <r>
+              <c>Watching Movies with the Sound Off (10th Anniversary)</c>
+              <c>2013</c>
+              <c>Watching Movies with the Sound Off</c>
+            </r>
+            <r>
+              <c>K.I.D.S. (Deluxe)</c>
+              <c>2010</c>
+              <c>K.I.D.S.</c>
+            </r>
+            <r>
+              <c>Best Day Ever (5th Anniversary Remastered Edition)</c>
+              <c>2011</c>
+              <c>Best Day Ever</c>
+            </r>
+            <r>
+              <c>Macadelic</c>
+              <c>2012</c>
+              <c>Macadelic</c>
+            </r>
+            <r>
+              <c>Live From Space</c>
+              <c>2013</c>
+              <c>Live From Space</c>
+            </r>
+            <r>
+              <c>Circles</c>
+              <c>2020</c>
+              <c>Circles</c>
+            </r>
+            <r>
+              <c>Faces</c>
+              <c>2014</c>
+              <c>Faces</c>
+            </r>
+            <r>
+              <c>Blue Slide Park</c>
+              <c>2011</c>
+              <c>Blue Slide Park</c>
+            </r>
+            <r>
+              <c>Blue Slide Park (Commentary Version)</c>
+              <c>2011</c>
+              <c>Blue Slide Park</c>
+            </r>
+            <r>
+              <c>The Divine Feminine</c>
+              <c>2016</c>
+              <c>The Divine Feminine</c>
+            </r>
+            <r>
+              <c>5 Dollar Pony Rides</c>
+              <c>2014</c>
+              <c>Balloonerism</c>
+            </r>
+            <r>
+              <c>The Quest</c>
+              <c>2013</c>
+              <c>Watching Movies with the Sound Off</c>
+            </r>
+            <r>
+              <c>Circles (Deluxe)</c>
+              <c>2020</c>
+              <c>Circles</c>
+            </r>
+            <r>
+              <c>I Love Life, Thank You</c>
+              <c>2011</c>
+              <c>I Love Life, Thank You</c>
+            </r>
+          </Data>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Album Release Years</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+    </Node>
+    <Node ToolID="46">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="2562" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="album_name" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="album_name" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Left_album_name" selected="False" input="Left_" />
+                <SelectField field="Right_Part_of_song" selected="False" input="Right_" />
+                <SelectField field="Right_album_name" selected="False" input="Right_" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Add Album release years</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="47">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="2862" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="Replace([feature_guest], &quot;Mac Miller&quot;, &quot;&quot;)" field="feature_guest" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>If there is a feature, and mac miller is part of the lyric. Just keep the feature guest.</AnnotationText>
+          <DefaultAnnotationText><![CDATA[feature_guest = Replace([feature_guest], "Mac Miller", "")
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="48">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="2958" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="IF isempty([feature_guest]) then &quot;No feature&quot; else [feature_guest] endif" field="feature_guest" size="1073741823" type="V_WString" />
+            <FormulaField expression="if IsNull([album_name_short]) then &quot;No Album&quot; else [album_name_short] endif" field="album_name_short" size="2147483647" type="V_String" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Impute empty values</AnnotationText>
+          <DefaultAnnotationText>feature_guest = IF isempty([feature_guest]) then "No feature" else [feature_gues...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="49">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+        <Position x="2670" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ByName_ErrorMode>Warning</ByName_ErrorMode>
+          <ByName_OutputMode>All</ByName_OutputMode>
+          <Mode>ByName</Mode>
+          <SetOutputOrder value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+    </Node>
+    <Node ToolID="50">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="3174" y="66" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\BENMAN~1\AppData\Local\Temp\Engine_2920_20c245f8b84f3640a9709d0bd40fdfc5_\Engine_2920_6c6748b6cdf54f439d84c08559da65b5~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="51">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="2766" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="Type" selected="True" rename="part_type" />
+            <SelectField field="mac_miller?" selected="True" rename="feature_guest" />
+            <SelectField field="Part_of_song" selected="False" />
+            <SelectField field="album_name" selected="False" />
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="52">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="3126" y="126" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="LowerCase([Lyrics])" field="Lyrics" size="9692" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Normalise (lowercase) the lyrics</AnnotationText>
+          <DefaultAnnotationText><![CDATA[Lyrics = LowerCase([Lyrics])
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="53">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="2574" y="6" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="0">C:\Users\BenMangel\OneDrive - The Information Lab GmbH\Private_Projekte\Mac Miller\mac-miller-digital-humanities-analysis\analysis\album_release_year.csv</File>
+          <Passwords />
+          <Disable>False</Disable>
+          <FormatSpecificOptions>
+            <LineEndStyle>CRLF</LineEndStyle>
+            <Delimeter>,</Delimeter>
+            <ForceQuotes>False</ForceQuotes>
+            <HeaderRow>True</HeaderRow>
+            <CodePage>65001</CodePage>
+            <WriteBOM>True</WriteBOM>
+          </FormatSpecificOptions>
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>album_release_year.csv</DefaultAnnotationText>
           <Left value="False" />
         </Annotation>
         <Dependencies>
@@ -1109,6 +1430,46 @@ or Contains([track_name], "live in")</DefaultAnnotationText>
     </Connection>
     <Connection>
       <Origin ToolID="40" Connection="Output26" />
+      <Destination ToolID="46" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="45" Connection="Output" />
+      <Destination ToolID="46" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="45" Connection="Output" />
+      <Destination ToolID="53" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="46" Connection="Join" />
+      <Destination ToolID="49" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="46" Connection="Right" />
+      <Destination ToolID="49" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="47" Connection="Output" />
+      <Destination ToolID="48" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="48" Connection="Output" />
+      <Destination ToolID="50" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="48" Connection="Output" />
+      <Destination ToolID="52" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="49" Connection="Output" />
+      <Destination ToolID="51" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="51" Connection="Output" />
+      <Destination ToolID="47" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="52" Connection="Output" />
       <Destination ToolID="41" Connection="Input" />
     </Connection>
   </Connections>
