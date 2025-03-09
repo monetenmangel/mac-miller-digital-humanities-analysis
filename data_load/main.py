@@ -17,8 +17,8 @@ df = ScrapeSongs.scrape_all_lyrics(artist_songs)
 
 # Save results in csv
 output_dir = os.path.join(os.getcwd(), "output")
-output_path = os.path.join(output_dir, "lyrics.csv")
-df.to_csv(output_path, index=False, encoding="utf-8")
+output_path = os.path.join(output_dir, "lyrics.json")
+df.to_(output_path, orient = 'split', compression = 'infer', index = 'true')
 
 end = time.time()
 
