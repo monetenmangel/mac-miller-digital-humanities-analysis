@@ -124,19 +124,10 @@ rowSums(theta)[1:10] # rows in theta sum to 1
 
 terms(topicModel, 10)
 
-# Give topics pseudo names
-topKtermsPerTopic <- terms(topicModel, K)
+# Give topics pseudo names aka top 10 terms per topic
+topKtermsPerTopic <- terms(topicModel, 10)
 topicNames <- apply(topKtermsPerTopic, 2, paste, collapse = " ")
 
-# VISUALIZATION
-# LDAvis browser
-library(LDAvis)
-library("tsne")
-# svd_tsne <- function(x) tsne(svd(x)$u)
-# json <- createJSON(phi = beta, theta = theta, doc.length = rowSums(DTM),
-#                    vocab = colnames(DTM), term.frequency = colSums(DTM), mds.method = svd_tsne,
-#                    plot.opts = list(xlab = "", ylab = ""))
-# serVis(json)
 
 library(reshape2)
 library(ggplot2)
@@ -182,7 +173,7 @@ run_id <- paste0(
 # Extract topics
 topics_out <- terms(topicModel, 10)
 topics_df <- as.data.frame(topics_out, stringsAsFactors = FALSE)
-topics_df <- cbind(Topic = colnames(topics_out), topics_df)
+# topics_df <- cbind(Topic = colnames(topics_out), topics_df)
 
 # add metadata to data frames
 topics_df$K       <- K
@@ -194,12 +185,6 @@ vizDataFrame$alpha   <- alpha
 vizDataFrame$run_id  <- run_id
 
 # Pivot topics_df
-
-# Rename "Topic" in "word_rank" bc otherwise we get confused with other
-# column names
-topics_df <- topics_df %>%
-  rename(topic_group = Topic)
-
 # Pivot every column with "Topic " in its name
 topics_long <- topics_df %>%
   pivot_longer(
