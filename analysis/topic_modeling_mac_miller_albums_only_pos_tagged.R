@@ -21,7 +21,7 @@ project_dir <- dirname(script_dir)
 setwd(project_dir)
 print(getwd())  # Check working directory
 
-data_path <- file.path(project_dir, "output", "output/lyrics_per_word_with_metadata_clean_lemma_pos_tagged.csv")
+data_path <- file.path(project_dir, "output", "lyrics_per_word_with_metadata_clean_lemma_pos_tagged.csv")
 
 # Load initial data
 df <- read.csv(data_path)
@@ -52,7 +52,8 @@ df_stop_words_removed <- df %>%
   anti_join(custom_stop_words, by = c("Lyrics" = "word")) %>% 
   anti_join(X20_most_commom_words, by = c("Lyrics" = "Lyrics")) %>% 
   filter(album_name_short != "No Album") %>% 
-  filter(with_mac_miller == "True")
+  filter(with_mac_miller == "True") %>% 
+  filter(upos %in% c("NOUN", "ADJ"))
 
 
 # ------------------------------------------------------------------------------

@@ -63,7 +63,7 @@ df_grouped_pos_flat <- unnest(df_grouped, cols = pos_results) %>%
 # NOT DONEEE
 
 df_result <- df_grouped_pos_flat %>% 
-  join(df, by URL)
+  inner_join(df, by = "URL")
 
 write.csv(df_grouped_pos_flat, "output/lyrics_per_word_with_metadata_clean_lemma_pos_tagged.csv")
 
