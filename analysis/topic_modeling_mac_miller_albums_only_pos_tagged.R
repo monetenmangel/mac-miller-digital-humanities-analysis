@@ -1,7 +1,9 @@
 # Topic modeling, LDA, on Mac Millers Lyrics
 # Input:
 # - df with all lyrics from genius
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # - df is POS tagged + lemmas
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # - 1 word per line
 # - metadata:
 #   - track_name
@@ -47,7 +49,7 @@ library(readr)
 data(stop_words)
 custom_stop_words <- read.csv("analysis/custom_stop_words.csv")
 X20_most_commom_words <- read_csv("analysis/20_most_commom_words.csv")
-df_stop_words_removed <- df %>% 
+df_stop_words_removed_only_adj_noun <- df %>% 
   anti_join(stop_words, by = c("Lyrics" = "word")) %>% 
   anti_join(custom_stop_words, by = c("Lyrics" = "word")) %>% 
   anti_join(X20_most_commom_words, by = c("Lyrics" = "Lyrics")) %>% 
@@ -68,7 +70,7 @@ df_stop_words_removed <- df %>%
 library(quanteda)
 require(topicmodels)
 
-df_grouped <- df_stop_words_removed %>% 
+df_grouped <- df_stop_words_removed_only_adj_noun %>% 
   group_by(URL) %>% 
   summarise(text = paste(Lyrics, collapse = " "),
             release_year = first(release_year),
@@ -93,7 +95,7 @@ dim(DTM)
 
 # LDA ----------
 
-K <- 7
+K <- 5
 alpha <- 0.02
 
 # compute LDA model, inference with n iterations of Gibbs sampling
@@ -215,8 +217,8 @@ append_to_csv <- function(df, csv_path) {
 }
 
 
-append_to_csv(topics_long, "analysis_results/topics_long.csv")
-append_to_csv(vizDataFrame, "analysis_results/vizData_long.csv")
+append_to_csv(topics_long, "analysis_results/topics_long_pos_tagged.csv")
+append_to_csv(vizDataFrame, "analysis_results/vizData_long_pos_tagged.csv")
 
 
 
