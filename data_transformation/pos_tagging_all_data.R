@@ -21,10 +21,15 @@ df <- read.csv(data_path)
 #------------------------------------------------------------
 # Prep data 
 # Group together per track, to give POS algo more context
+library(tidyverse)
 
 df_grouped <- df %>% 
   group_by(URL) %>% 
-  summarise(text = paste(Lyrics, collapse = " "))
+  summarise(text = paste(Lyrics, collapse = " "),
+            release_year = first(release_year),
+            album_name_short = first(album_name_short),
+            track_name = first(track_name),
+            with_mac_miller = first(with_mac_miller))
 
 #------------------------------------------------------------
 # POS Tagging
@@ -47,11 +52,14 @@ pos_tagging <- function(text) {
 df_grouped$pos_results <- lapply(df_grouped$text, pos_tagging)
 
 # Unnest df with pos tagging
-library(tidyverse)
 
 df_grouped_pos_flat <- unnest(df_grouped, cols = pos_results) %>% 
   select(
     URL,
+    release_year,
+    album_name_short,
+    track_name,
+    with_mac_miller,
     token,
     lemma,
     upos,
@@ -59,11 +67,7 @@ df_grouped_pos_flat <- unnest(df_grouped, cols = pos_results) %>%
   ) %>% 
   rename(Lyrics = token)
 
-# Add metainformation from original df back to POS tagged df
-# NOT DONEEE
-
-df_result <- df_grouped_pos_flat %>% 
-  inner_join(df, by = "URL")
+# Write Results
 
 write.csv(df_grouped_pos_flat, "output/lyrics_per_word_with_metadata_clean_lemma_pos_tagged.csv")
 
