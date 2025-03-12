@@ -91,7 +91,7 @@ dim(DTM)
 
 # LDA ----------
 
-K <- 7
+K <- 6
 alpha <- 0.02
 
 # compute LDA model, inference with n iterations of Gibbs sampling

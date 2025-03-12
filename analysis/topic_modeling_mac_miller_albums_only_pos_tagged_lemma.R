@@ -3,6 +3,7 @@
 # - df with all lyrics from genius
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # - df is POS tagged
+# - lemmas are used
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # - 1 word per line
 # - metadata:
@@ -74,7 +75,7 @@ require(topicmodels)
 df_grouped <- df_stop_words_removed_only_adj_noun %>% 
   group_by(URL) %>% 
   # "Lyrics" if original, or "lemma" if lemmatized
-  summarise(text = paste(Lyrics, collapse = " "),
+  summarise(text = paste(lemma, collapse = " "),
             release_year = first(release_year),
             album_name_short = first(album_name_short))
 
@@ -97,8 +98,8 @@ dim(DTM)
 
 # LDA ----------
 
-K <- 6
-alpha <- 0.005
+K <- 7
+alpha <- 0.02
 
 # compute LDA model, inference with n iterations of Gibbs sampling
 topicModel <- LDA(DTM, K, method = "Gibbs", control = list(
@@ -219,8 +220,8 @@ append_to_csv <- function(df, csv_path) {
 }
 
 
-append_to_csv(topics_long, "analysis_results/topics_long_pos_tagged_adj_noun.csv")
-append_to_csv(vizDataFrame, "analysis_results/vizData_long_pos_tagged_adj_noun.csv")
+append_to_csv(topics_long, "analysis_results/topics_long_pos_tagged_adj_noun_lemma.csv")
+append_to_csv(vizDataFrame, "analysis_results/vizData_long_pos_tagged_adj_noun_lemma.csv")
 
 
 
