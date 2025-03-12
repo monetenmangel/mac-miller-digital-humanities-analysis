@@ -491,6 +491,7 @@
             <column caption='Lyrics1' datatype='string' name='[Lyrics]' role='dimension' type='nominal' />
             <column caption='Album Name Short' datatype='string' name='[album_name_short]' role='dimension' type='nominal' />
             <column-instance column='[Lyrics]' derivation='Count' name='[cnt:Lyrics:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Lyrics]' derivation='CountD' name='[ctd:Lyrics:qk]' pivot='key' type='quantitative' />
             <column-instance column='[album_name_short]' derivation='None' name='[none:album_name_short:nk]' pivot='key' type='nominal' />
             <column-instance column='[Calculation_3176445168381964289]' derivation='Sum' name='[sum:Calculation_3176445168381964289:qk]' pivot='key' type='quantitative' />
             <column caption='Track Name' datatype='string' name='[track_name]' role='dimension' type='nominal' />
@@ -509,9 +510,13 @@
         <style>
           <style-rule element='axis'>
             <format attr='title' class='0' field='[federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[cnt:Lyrics:qk]' scope='cols' value='# of words' />
+            <format attr='title' class='0' field='[federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[ctd:Lyrics:qk]' scope='cols' value='# of distinct words' />
           </style-rule>
           <style-rule element='header'>
             <format attr='width' field='[federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[none:album_name_short:nk]' value='232' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='rows' value='false' />
           </style-rule>
         </style>
         <panes>
@@ -560,7 +565,7 @@
               </style-rule>
             </style>
           </pane>
-          <pane id='5' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[cnt:Lyrics:qk]' x-index='1'>
+          <pane id='5' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[ctd:Lyrics:qk]'>
             <view>
               <breakdown value='auto' />
             </view>
@@ -577,7 +582,7 @@
           </pane>
         </panes>
         <rows>[federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[none:album_name_short:nk]</rows>
-        <cols>([federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[cnt:Lyrics:qk] + ([federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[cnt:Lyrics:qk] + [federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[sum:Calculation_3176445168381964289:qk]))</cols>
+        <cols>([federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[cnt:Lyrics:qk] + ([federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[ctd:Lyrics:qk] + [federated.1u6ctbx0ju1s7t1cvjsgd0kvlddw].[sum:Calculation_3176445168381964289:qk]))</cols>
       </table>
       <simple-id uuid='{2C3EC76D-7D12-4A35-AFDF-868DEEE46B6B}' />
     </worksheet>

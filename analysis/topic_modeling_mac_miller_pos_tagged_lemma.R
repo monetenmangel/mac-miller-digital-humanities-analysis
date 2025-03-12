@@ -4,7 +4,7 @@
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # - df is POS tagged
 # - lemmas are used
-# - only albums used
+# - everything used
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # - 1 word per line
 # - metadata:
@@ -55,8 +55,6 @@ df_stop_words_removed_only_adj_noun <- df %>%
   anti_join(stop_words, by = c("Lyrics" = "word")) %>% 
   anti_join(custom_stop_words, by = c("Lyrics" = "word")) %>% 
   anti_join(X20_most_commom_words, by = c("Lyrics" = "Lyrics")) %>% 
-  filter(album_name_short != "No Album") %>%
-  filter(album_name_short != "Live From Space") %>% 
   filter(with_mac_miller == "True") %>% 
   filter(upos %in% c("NOUN", "ADJ"))
 
@@ -221,8 +219,8 @@ append_to_csv <- function(df, csv_path) {
 }
 
 
-append_to_csv(topics_long, "analysis_results/topics_long_pos_tagged_adj_noun_lemma.csv")
-append_to_csv(vizDataFrame, "analysis_results/vizData_long_pos_tagged_adj_noun_lemma.csv")
+append_to_csv(topics_long, "analysis_results/all_lyrics_topics_long_pos_tagged_adj_noun_lemma.csv")
+append_to_csv(vizDataFrame, "analysis_results/all_lyrics_vizData_long_pos_tagged_adj_noun_lemma.csv")
 
 
 
