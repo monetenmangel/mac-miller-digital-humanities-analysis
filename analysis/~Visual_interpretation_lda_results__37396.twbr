@@ -6,6 +6,8 @@
     <AccessibleZoneTabOrder />
     <AnimationOnByDefault />
     <AutoCreateAndUpdateDSDPhoneLayouts />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
     <MarkAnimation />
     <ObjectModelEncapsulateLegacy />
     <ObjectModelTableType />
@@ -20,6 +22,14 @@
     <preference name='ui.encoding.shelf.height' value='24' />
     <preference name='ui.shelf.height' value='26' />
   </preferences>
+  <style>
+    <style-rule element='worksheet'>
+      <format attr='font-size' value='12' />
+    </style-rule>
+    <style-rule element='all'>
+      <format attr='font-family' value='Garamond' />
+    </style-rule>
+  </style>
   <datasources>
     <datasource caption='vizData_long' inline='true' name='federated.0rtaywn0z85efe176cgbx1dauwzk' version='18.1'>
       <connection class='federated'>
@@ -422,407 +432,6 @@
                   <column datatype='real' name='alpha' ordinal='4' />
                   <column datatype='string' name='run_id' ordinal='5' />
                   <column datatype='string' name='album_name_short' ordinal='6' />
-                </columns>
-              </relation>
-            </properties>
-          </object>
-        </objects>
-      </object-graph>
-    </datasource>
-    <datasource caption='vizData_long_pos_tagged_adj_noun_lemma' inline='true' name='federated.05m8q4j1t4l8lc13p5wrj18eqm4r' version='18.1'>
-      <connection class='federated'>
-        <named-connections>
-          <named-connection caption='vizData_long_pos_tagged_adj_noun_lemma' name='textscan.1m1xbf00htqv6019lt7zf1h9vt4n'>
-            <connection class='textscan' directory='C:/Users/BenMangel/OneDrive - The Information Lab GmbH/Private_Projekte/Mac Miller/mac-miller-digital-humanities-analysis/analysis_results' filename='vizData_long_pos_tagged_adj_noun_lemma.csv' password='' server='' />
-          </named-connection>
-        </named-connections>
-        <relation connection='textscan.1m1xbf00htqv6019lt7zf1h9vt4n' name='vizData_long_pos_tagged_adj_noun_lemma.csv' table='[vizData_long_pos_tagged_adj_noun_lemma#csv]' type='table'>
-          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
-            <column datatype='string' name='album_name_short' ordinal='0' />
-            <column datatype='string' name='variable' ordinal='1' />
-            <column datatype='real' name='value' ordinal='2' />
-            <column datatype='integer' name='K' ordinal='3' />
-            <column datatype='real' name='alpha' ordinal='4' />
-            <column datatype='string' name='run_id' ordinal='5' />
-          </columns>
-        </relation>
-        <metadata-records>
-          <metadata-record class='capability'>
-            <remote-name />
-            <remote-type>0</remote-type>
-            <parent-name>[vizData_long_pos_tagged_adj_noun_lemma.csv]</parent-name>
-            <remote-alias />
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
-              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
-              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
-              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
-              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
-              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>album_name_short</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[album_name_short]</local-name>
-            <parent-name>[vizData_long_pos_tagged_adj_noun_lemma.csv]</parent-name>
-            <remote-alias>album_name_short</remote-alias>
-            <ordinal>0</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RUS' />
-            <object-id>[vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822]</object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>variable</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[variable]</local-name>
-            <parent-name>[vizData_long_pos_tagged_adj_noun_lemma.csv]</parent-name>
-            <remote-alias>variable</remote-alias>
-            <ordinal>1</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RUS' />
-            <object-id>[vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822]</object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>value</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[value]</local-name>
-            <parent-name>[vizData_long_pos_tagged_adj_noun_lemma.csv]</parent-name>
-            <remote-alias>value</remote-alias>
-            <ordinal>2</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <object-id>[vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822]</object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>K</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[K]</local-name>
-            <parent-name>[vizData_long_pos_tagged_adj_noun_lemma.csv]</parent-name>
-            <remote-alias>K</remote-alias>
-            <ordinal>3</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <object-id>[vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822]</object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>alpha</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[alpha]</local-name>
-            <parent-name>[vizData_long_pos_tagged_adj_noun_lemma.csv]</parent-name>
-            <remote-alias>alpha</remote-alias>
-            <ordinal>4</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <object-id>[vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822]</object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>run_id</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[run_id]</local-name>
-            <parent-name>[vizData_long_pos_tagged_adj_noun_lemma.csv]</parent-name>
-            <remote-alias>run_id</remote-alias>
-            <ordinal>5</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RUS' />
-            <object-id>[vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822]</object-id>
-          </metadata-record>
-        </metadata-records>
-      </connection>
-      <aliases enabled='yes' />
-      <column aggregation='Sum' datatype='integer' name='[K]' role='dimension' type='ordinal' />
-      <column caption='vizData_long_pos_tagged_adj_noun_lemma.csv' datatype='table' name='[__tableau_internal_object_id__].[vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822]' role='measure' type='quantitative' />
-      <column datatype='string' name='[album_name_short]' role='dimension' type='nominal' />
-      <column aggregation='Sum' datatype='real' name='[alpha]' role='dimension' type='ordinal' />
-      <column datatype='string' name='[variable]' role='dimension' type='nominal' />
-      <column-instance column='[album_name_short]' derivation='None' name='[none:album_name_short:nk]' pivot='key' type='nominal' />
-      <column-instance column='[variable]' derivation='None' name='[none:variable:nk]' pivot='key' type='nominal' />
-      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
-      <style>
-        <style-rule element='mark'>
-          <encoding attr='color' field='[none:variable:nk]' type='palette'>
-            <map to='#499894'>
-              <bucket>&quot;how car motherfucker deeper dick window minute pussy star wit&quot;</bucket>
-            </map>
-            <map to='#499894'>
-              <bucket>&quot;park birthday happy blue motherfucker rap rich alright head slide&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;alright feeling day fun slow weekend tonight friend rap wing&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;alright grand fun day ass dream body bap rap shake&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;alright heart truth dream song free bad eye death feelin&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;dead homy alright death rich rap angel god sense déjà&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;dead homy people drug grand rich death god dream angel&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;dream alright heart truth pain door eye babe death song&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;dream homy dead cup low head dollar free top foot&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;drug angel insomniac dick sense bet car dust merry black&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;drug dick white car angel god head insomniac pussy strong&quot;</bucket>
-            </map>
-            <map to='#59a14f'>
-              <bucket>&quot;drug dead homy rap cup public head low crazy middle&quot;</bucket>
-            </map>
-            <map to='#59a14f'>
-              <bucket>&quot;hand night party tomorrow drink people bitch top hat hoe&quot;</bucket>
-            </map>
-            <map to='#59a14f'>
-              <bucket>&quot;hat rome game bitch foot movie nike bad top head&quot;</bucket>
-            </map>
-            <map to='#59a14f'>
-              <bucket>&quot;kid happy people friend day boy park birthday couple blue&quot;</bucket>
-            </map>
-            <map to='#59a14f'>
-              <bucket>&quot;kid people party night hoe music girl boy couple bitch&quot;</bucket>
-            </map>
-            <map to='#59a14f'>
-              <bucket>&quot;party night alright tomorrow heart people drink babe head song&quot;</bucket>
-            </map>
-            <map to='#59a14f'>
-              <bucket>&quot;people night word kid feeling lot friend sun flight mornin&quot;</bucket>
-            </map>
-            <map to='#59a14f'>
-              <bucket>&quot;rome motherfucker blue park kid rich lot slide ass foot&quot;</bucket>
-            </map>
-            <map to='#59a14f'>
-              <bucket>&quot;truth happy birthday feeling party boy smile day hell music&quot;</bucket>
-            </map>
-            <map to='#76b7b2'>
-              <bucket>&quot;drug park blue slide déjà vu head playground market swing&quot;</bucket>
-            </map>
-            <map to='#76b7b2'>
-              <bucket>&quot;hand people hat team dream cup game night kid hoe&quot;</bucket>
-            </map>
-            <map to='#76b7b2'>
-              <bucket>&quot;heart truth dream song babe door happy birthday hell heaven&quot;</bucket>
-            </map>
-            <map to='#76b7b2'>
-              <bucket>&quot;kid hand people girl bitch hoe game hat team night&quot;</bucket>
-            </map>
-            <map to='#76b7b2'>
-              <bucket>&quot;kid party people night bitch hoe girl boy light team&quot;</bucket>
-            </map>
-            <map to='#76b7b2'>
-              <bucket>&quot;kid party people night hoe girl boy hand bitch team&quot;</bucket>
-            </map>
-            <map to='#76b7b2'>
-              <bucket>&quot;kid people hand party bitch night girl hoe music hat&quot;</bucket>
-            </map>
-            <map to='#79706e'>
-              <bucket>&quot;team sleep smile head people easy fresh claymation bunch vacation&quot;</bucket>
-            </map>
-            <map to='#86bcb6'>
-              <bucket>&quot;kid people night party bitch game hoe girl dream music&quot;</bucket>
-            </map>
-            <map to='#86bcb6'>
-              <bucket>&quot;party people homy rap night road homie cup hoe dead&quot;</bucket>
-            </map>
-            <map to='#8cd17d'>
-              <bucket>&quot;feeling kid head sun playground destination reality dream shame swing&quot;</bucket>
-            </map>
-            <map to='#8cd17d'>
-              <bucket>&quot;how babe pussy dream dick grand motherfucker angel feeling drug&quot;</bucket>
-            </map>
-            <map to='#9c755f'>
-              <bucket>&quot;party night head heart hoe drug people cup flight song&quot;</bucket>
-            </map>
-            <map to='#a0cbe8'>
-              <bucket>&quot;babe rain reason loving livin bad time child honest conversation&quot;</bucket>
-            </map>
-            <map to='#a0cbe8'>
-              <bucket>&quot;drug babe how head white pussy dick motherfucker word hand&quot;</bucket>
-            </map>
-            <map to='#b07aa1'>
-              <bucket>&quot;how rich dick motherfucker car game white crib mom pussy&quot;</bucket>
-            </map>
-            <map to='#b07aa1'>
-              <bucket>&quot;tomorrow drink dead homy night foot nike merry complete murder&quot;</bucket>
-            </map>
-            <map to='#b07aa1'>
-              <bucket>&quot;truth door dream free night eye light feelin bad day&quot;</bucket>
-            </map>
-            <map to='#b07aa1'>
-              <bucket>&quot;truth happy game rome birthday eye blue day fun song&quot;</bucket>
-            </map>
-            <map to='#b07aa1'>
-              <bucket>&quot;truth pain bad death afraid sun weather perfect feeling game&quot;</bucket>
-            </map>
-            <map to='#b6992d'>
-              <bucket>&quot;hand hat girl strong word ignorant willie worst silence front&quot;</bucket>
-            </map>
-            <map to='#b6992d'>
-              <bucket>&quot;kid couple people team bitch smile day door music boy&quot;</bucket>
-            </map>
-            <map to='#bab0ac'>
-              <bucket>&quot;tomorrow drink night merry murder swimmin spaceship everything mornin white&quot;</bucket>
-            </map>
-            <map to='#bab0ac'>
-              <bucket>&quot;tomorrow night drink card insomniac sleep merry pop festival muhfuckin&quot;</bucket>
-            </map>
-            <map to='#d37295'>
-              <bucket>&quot;weather déjà song vu people shine soul skin hoe extra&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;dream pain truth babe door eye light feelin perfect bad&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;drug tomorrow drink how night motherfucker dick head white bag&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;grand déjà fun rich public motherfucker playground vu brand king&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;hand alright dream hat rome top bitch tonight game head&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;happy birthday blue park word music dope slide smile boy&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;homy dead dream bitch grand low rap cup free foot&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;homy dream dead how motherfucker kid top bitch grand cup&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;people homy dead mad bitch kid rap mom foot hater&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;rich angel afraid pop friend slow dust brand sense free&quot;</bucket>
-            </map>
-            <map to='#edc948'>
-              <bucket>&quot;homy dead dream grand death people middle destination bitch head&quot;</bucket>
-            </map>
-            <map to='#edc948'>
-              <bucket>&quot;party tonight night bitch hoe rome rap top alright people&quot;</bucket>
-            </map>
-            <map to='#edc948'>
-              <bucket>&quot;rome top grand lot rich eye wrong ass job fun&quot;</bucket>
-            </map>
-            <map to='#edc948'>
-              <bucket>&quot;tomorrow alright babe death drink heart night pain dream bit&quot;</bucket>
-            </map>
-            <map to='#edc948'>
-              <bucket>&quot;tomorrow alright heart drink dream night bad how babe tonight&quot;</bucket>
-            </map>
-            <map to='#f1ce63'>
-              <bucket>&quot;heart eye truth dream alright light free drug death pain&quot;</bucket>
-            </map>
-            <map to='#f1ce63'>
-              <bucket>&quot;kid dream day fun door couple friend blue park music&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;birthday blue happy track slide park song lot wake album&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;birthday reason lot heaven happy angel afraid pill eye dust&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;dream heart alright top eye lot game free head door&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;drug birthday happy rap party people déjà pop head vu&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;drug bitch how dick motherfucker word girl car insomniac bet&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;drug motherfucker how dick bitch white bad car pussy rap&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;drug tomorrow motherfucker drink night how head white crazy dick&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;hand hat déjà people door deeper vu rap picture game&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;hand hat rap motherfucker people déjà deeper rich game vu&quot;</bucket>
-            </map>
-            <map to='#ff9d9a'>
-              <bucket>&quot;rome bitch motherfucker movie tonight head goddamn weekend game card&quot;</bucket>
-            </map>
-            <map to='#ff9d9a'>
-              <bucket>&quot;tomorrow dream alright heart night eye truth lot free pain&quot;</bucket>
-            </map>
-            <map to='#ff9da7'>
-              <bucket>&quot;kid hand people boy team girl light game couple hoe&quot;</bucket>
-            </map>
-            <map to='#ff9da7'>
-              <bucket>&quot;weather reason lot sun bad angel rich song dust conversation&quot;</bucket>
-            </map>
-            <map to='#ffbe7d'>
-              <bucket>&quot;boy insomniac foot thumb happy air complete nike cypher smile&quot;</bucket>
-            </map>
-            <map to='#ffbe7d'>
-              <bucket>&quot;hand hat rome rich top bitch bad reason vacation card&quot;</bucket>
-            </map>
-          </encoding>
-        </style-rule>
-      </style>
-      <semantic-values>
-        <semantic-value key='[Country].[Name]' value='&quot;Germany&quot;' />
-      </semantic-values>
-      <date-options start-of-week='monday' />
-      <default-sorts>
-        <manual-sort column='[none:album_name_short:nk]' direction='ASC'>
-          <dictionary>
-            <bucket>&quot;K.I.D.S.&quot;</bucket>
-            <bucket>&quot;Best Day Ever&quot;</bucket>
-            <bucket>&quot;Blue Slide Park&quot;</bucket>
-            <bucket>&quot;I Love Life, Thank You&quot;</bucket>
-            <bucket>&quot;Macadelic&quot;</bucket>
-            <bucket>&quot;Balloonerism&quot;</bucket>
-            <bucket>&quot;Faces&quot;</bucket>
-            <bucket>&quot;Watching Movies with the Sound Off&quot;</bucket>
-            <bucket>&quot;GO:OD AM&quot;</bucket>
-            <bucket>&quot;The Divine Feminine&quot;</bucket>
-            <bucket>&quot;Swimming&quot;</bucket>
-            <bucket>&quot;Circles&quot;</bucket>
-          </dictionary>
-        </manual-sort>
-      </default-sorts>
-      <object-graph>
-        <objects>
-          <object caption='vizData_long_pos_tagged_adj_noun_lemma.csv' id='vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822'>
-            <properties context=''>
-              <relation connection='textscan.1m1xbf00htqv6019lt7zf1h9vt4n' name='vizData_long_pos_tagged_adj_noun_lemma.csv' table='[vizData_long_pos_tagged_adj_noun_lemma#csv]' type='table'>
-                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
-                  <column datatype='string' name='album_name_short' ordinal='0' />
-                  <column datatype='string' name='variable' ordinal='1' />
-                  <column datatype='real' name='value' ordinal='2' />
-                  <column datatype='integer' name='K' ordinal='3' />
-                  <column datatype='real' name='alpha' ordinal='4' />
-                  <column datatype='string' name='run_id' ordinal='5' />
                 </columns>
               </relation>
             </properties>
@@ -1604,6 +1213,453 @@
         </objects>
       </object-graph>
     </datasource>
+    <datasource caption='vizData_long_pos_tagged_adj_noun_lemma' inline='true' name='federated.05m8q4j1t4l8lc13p5wrj18eqm4r' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='vizData_long_pos_tagged_adj_noun_lemma' name='textscan.1m1xbf00htqv6019lt7zf1h9vt4n'>
+            <connection class='textscan' directory='C:/Users/BenMangel/OneDrive - The Information Lab GmbH/Private_Projekte/Mac Miller/mac-miller-digital-humanities-analysis/analysis_results' filename='vizData_long_pos_tagged_adj_noun_lemma.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.1m1xbf00htqv6019lt7zf1h9vt4n' name='vizData_long_pos_tagged_adj_noun_lemma.csv' table='[vizData_long_pos_tagged_adj_noun_lemma#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='album_name_short' ordinal='0' />
+            <column datatype='string' name='variable' ordinal='1' />
+            <column datatype='real' name='value' ordinal='2' />
+            <column datatype='integer' name='K' ordinal='3' />
+            <column datatype='real' name='alpha' ordinal='4' />
+            <column datatype='string' name='run_id' ordinal='5' />
+            <column datatype='string' name='release_year' ordinal='6' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[vizData_long_pos_tagged_adj_noun_lemma.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>album_name_short</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[album_name_short]</local-name>
+            <parent-name>[vizData_long_pos_tagged_adj_noun_lemma.csv]</parent-name>
+            <remote-alias>album_name_short</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>variable</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[variable]</local-name>
+            <parent-name>[vizData_long_pos_tagged_adj_noun_lemma.csv]</parent-name>
+            <remote-alias>variable</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>value</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[value]</local-name>
+            <parent-name>[vizData_long_pos_tagged_adj_noun_lemma.csv]</parent-name>
+            <remote-alias>value</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>K</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[K]</local-name>
+            <parent-name>[vizData_long_pos_tagged_adj_noun_lemma.csv]</parent-name>
+            <remote-alias>K</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>alpha</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[alpha]</local-name>
+            <parent-name>[vizData_long_pos_tagged_adj_noun_lemma.csv]</parent-name>
+            <remote-alias>alpha</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>run_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[run_id]</local-name>
+            <parent-name>[vizData_long_pos_tagged_adj_noun_lemma.csv]</parent-name>
+            <remote-alias>run_id</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>release_year</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[release_year]</local-name>
+            <parent-name>[vizData_long_pos_tagged_adj_noun_lemma.csv]</parent-name>
+            <remote-alias>release_year</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column aggregation='Sum' datatype='integer' name='[K]' role='dimension' type='ordinal' />
+      <column caption='vizData_long_pos_tagged_adj_noun_lemma.csv' datatype='table' name='[__tableau_internal_object_id__].[vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822]' role='measure' type='quantitative' />
+      <column datatype='string' name='[album_name_short]' role='dimension' type='nominal' />
+      <column aggregation='Sum' datatype='real' name='[alpha]' role='dimension' type='ordinal' />
+      <column datatype='real' default-format='p0.0%' name='[value]' role='measure' type='quantitative' />
+      <column caption='Thema' datatype='string' name='[variable (copy)_2631509613819617280]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='[variable]' />
+        <aliases>
+          <alias key='&quot;dead homy people drug grand rich death god dream angel&quot;' value='Spiritualität, Transzendenz und Vergänglichkeit' />
+          <alias key='&quot;drug tomorrow motherfucker drink night how head white crazy dick&quot;' value='Drogen, Wahnsinn und Exzess' />
+          <alias key='&quot;hand alright dream hat rome top bitch tonight game head&quot;' value='Realität' />
+          <alias key='&quot;heart truth dream song babe door happy birthday hell heaven&quot;' value='Emotionen, Introspektion und Sehnsucht' />
+          <alias key='&quot;kid people party night hoe music girl boy couple bitch&quot;' value='Beziehungen, Party und Exzess' />
+        </aliases>
+      </column>
+      <column datatype='string' name='[variable]' role='dimension' type='nominal' />
+      <column-instance column='[album_name_short]' derivation='None' name='[none:album_name_short:nk]' pivot='key' type='nominal' />
+      <column-instance column='[variable (copy)_2631509613819617280]' derivation='None' name='[none:variable (copy)_2631509613819617280:nk]' pivot='key' type='nominal' />
+      <column-instance column='[variable]' derivation='None' name='[none:variable:nk]' pivot='key' type='nominal' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:variable:nk]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;how car motherfucker deeper dick window minute pussy star wit&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;park birthday happy blue motherfucker rap rich alright head slide&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;alright feeling day fun slow weekend tonight friend rap wing&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;alright grand fun day ass dream body bap rap shake&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;alright heart truth dream song free bad eye death feelin&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;dead homy alright death rich rap angel god sense déjà&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;dead homy people drug grand rich death god dream angel&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;dream alright heart truth pain door eye babe death song&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;dream homy dead cup low head dollar free top foot&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;drug angel insomniac dick sense bet car dust merry black&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;drug dick white car angel god head insomniac pussy strong&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;drug dead homy rap cup public head low crazy middle&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;hand night party tomorrow drink people bitch top hat hoe&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;hat rome game bitch foot movie nike bad top head&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;kid happy people friend day boy park birthday couple blue&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;kid people party night hoe music girl boy couple bitch&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;party night alright tomorrow heart people drink babe head song&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;people night word kid feeling lot friend sun flight mornin&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;rome motherfucker blue park kid rich lot slide ass foot&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;truth happy birthday feeling party boy smile day hell music&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;drug park blue slide déjà vu head playground market swing&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;hand people hat team dream cup game night kid hoe&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;heart truth dream song babe door happy birthday hell heaven&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;kid hand people girl bitch hoe game hat team night&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;kid party people night bitch hoe girl boy light team&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;kid party people night hoe girl boy hand bitch team&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;kid people hand party bitch night girl hoe music hat&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;team sleep smile head people easy fresh claymation bunch vacation&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;kid people night party bitch game hoe girl dream music&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;party people homy rap night road homie cup hoe dead&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;feeling kid head sun playground destination reality dream shame swing&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;how babe pussy dream dick grand motherfucker angel feeling drug&quot;</bucket>
+            </map>
+            <map to='#9c755f'>
+              <bucket>&quot;party night head heart hoe drug people cup flight song&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;babe rain reason loving livin bad time child honest conversation&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;drug babe how head white pussy dick motherfucker word hand&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;how rich dick motherfucker car game white crib mom pussy&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;tomorrow drink dead homy night foot nike merry complete murder&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;truth door dream free night eye light feelin bad day&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;truth happy game rome birthday eye blue day fun song&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;truth pain bad death afraid sun weather perfect feeling game&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;hand hat girl strong word ignorant willie worst silence front&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;kid couple people team bitch smile day door music boy&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;tomorrow drink night merry murder swimmin spaceship everything mornin white&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;tomorrow night drink card insomniac sleep merry pop festival muhfuckin&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;weather déjà song vu people shine soul skin hoe extra&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;dream pain truth babe door eye light feelin perfect bad&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;drug tomorrow drink how night motherfucker dick head white bag&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;grand déjà fun rich public motherfucker playground vu brand king&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;hand alright dream hat rome top bitch tonight game head&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;happy birthday blue park word music dope slide smile boy&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;homy dead dream bitch grand low rap cup free foot&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;homy dream dead how motherfucker kid top bitch grand cup&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;people homy dead mad bitch kid rap mom foot hater&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;rich angel afraid pop friend slow dust brand sense free&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;homy dead dream grand death people middle destination bitch head&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;party tonight night bitch hoe rome rap top alright people&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;rome top grand lot rich eye wrong ass job fun&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;tomorrow alright babe death drink heart night pain dream bit&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;tomorrow alright heart drink dream night bad how babe tonight&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;heart eye truth dream alright light free drug death pain&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;kid dream day fun door couple friend blue park music&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;birthday blue happy track slide park song lot wake album&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;birthday reason lot heaven happy angel afraid pill eye dust&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;dream heart alright top eye lot game free head door&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;drug birthday happy rap party people déjà pop head vu&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;drug bitch how dick motherfucker word girl car insomniac bet&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;drug motherfucker how dick bitch white bad car pussy rap&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;drug tomorrow motherfucker drink night how head white crazy dick&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;hand hat déjà people door deeper vu rap picture game&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;hand hat rap motherfucker people déjà deeper rich game vu&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;rome bitch motherfucker movie tonight head goddamn weekend game card&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;tomorrow dream alright heart night eye truth lot free pain&quot;</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>&quot;kid hand people boy team girl light game couple hoe&quot;</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>&quot;weather reason lot sun bad angel rich song dust conversation&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;boy insomniac foot thumb happy air complete nike cypher smile&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;hand hat rome rich top bitch bad reason vacation card&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:variable (copy)_2631509613819617280:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;kid people party night hoe music girl boy couple bitch&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;dead homy people drug grand rich death god dream angel&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;hand alright dream hat rome top bitch tonight game head&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;heart truth dream song babe door happy birthday hell heaven&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;drug tomorrow motherfucker drink night how head white crazy dick&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Germany&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <default-sorts>
+        <manual-sort column='[none:album_name_short:nk]' direction='ASC'>
+          <dictionary>
+            <bucket>&quot;K.I.D.S.&quot;</bucket>
+            <bucket>&quot;Best Day Ever&quot;</bucket>
+            <bucket>&quot;I Love Life, Thank You&quot;</bucket>
+            <bucket>&quot;Blue Slide Park&quot;</bucket>
+            <bucket>&quot;Macadelic&quot;</bucket>
+            <bucket>&quot;Watching Movies with the Sound Off&quot;</bucket>
+            <bucket>&quot;Faces&quot;</bucket>
+            <bucket>&quot;Balloonerism&quot;</bucket>
+            <bucket>&quot;GO:OD AM&quot;</bucket>
+            <bucket>&quot;The Divine Feminine&quot;</bucket>
+            <bucket>&quot;Swimming&quot;</bucket>
+            <bucket>&quot;Circles&quot;</bucket>
+          </dictionary>
+        </manual-sort>
+      </default-sorts>
+      <object-graph>
+        <objects>
+          <object caption='vizData_long_pos_tagged_adj_noun_lemma.csv' id='vizData_long_pos_tagged_adj_noun_lemma.csv_D2A6B4FA7BE6454C84A5CAB3392C1822'>
+            <properties context=''>
+              <relation connection='textscan.1m1xbf00htqv6019lt7zf1h9vt4n' name='vizData_long_pos_tagged_adj_noun_lemma.csv' table='[vizData_long_pos_tagged_adj_noun_lemma#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='string' name='album_name_short' ordinal='0' />
+                  <column datatype='string' name='variable' ordinal='1' />
+                  <column datatype='real' name='value' ordinal='2' />
+                  <column datatype='integer' name='K' ordinal='3' />
+                  <column datatype='real' name='alpha' ordinal='4' />
+                  <column datatype='string' name='run_id' ordinal='5' />
+                  <column datatype='string' name='release_year' ordinal='6' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
   </datasources>
   <actions>
     <action caption='Highlight1' name='[Action1_61D623422237480EA186F7B3965CB007]'>
@@ -1651,29 +1707,30 @@
             <datasource caption='vizData_long_pos_tagged_adj_noun_lemma' name='federated.05m8q4j1t4l8lc13p5wrj18eqm4r' />
           </datasources>
           <datasource-dependencies datasource='federated.05m8q4j1t4l8lc13p5wrj18eqm4r'>
-            <column datatype='string' name='[album_name_short]' role='dimension' type='nominal' />
-            <column-instance column='[album_name_short]' derivation='None' name='[none:album_name_short:nk]' pivot='key' type='nominal' />
             <column-instance column='[run_id]' derivation='None' name='[none:run_id:nk]' pivot='key' type='nominal' />
             <column-instance column='[variable]' derivation='None' name='[none:variable:nk]' pivot='key' type='nominal' />
-            <column-instance column='[value]' derivation='Sum' name='[pcto:sum:value:qk:2]' pivot='key' type='quantitative'>
-              <table-calc ordering-type='Rows' type='PctTotal' />
+            <column-instance column='[value]' derivation='Sum' name='[pcto:sum:value:qk:3]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Columns' type='PctTotal' />
             </column-instance>
             <column datatype='string' name='[run_id]' role='dimension' type='nominal' />
             <column-instance column='[value]' derivation='Sum' name='[sum:value:qk]' pivot='key' type='quantitative' />
-            <column datatype='real' name='[value]' role='measure' type='quantitative' />
+            <column datatype='real' default-format='p0.0%' name='[value]' role='measure' type='quantitative' />
             <column datatype='string' name='[variable]' role='dimension' type='nominal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:run_id:nk]'>
             <groupfilter function='member' level='[none:run_id:nk]' member='&quot;topic_modeling_mac_miller_albums_only_pos_tagged_lemma_K6_alpha0.02_20250311_152959&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:variable:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[sum:value:qk]' shelf='rows' />
+          </shelf-sorts>
           <slices>
             <column>[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:run_id:nk]</column>
           </slices>
           <aggregation value='true' />
         </view>
         <style>
-          <style-rule element='cell'>
-            <format attr='text-format' field='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[pcto:sum:value:qk:2]' value='p0.0%' />
+          <style-rule element='header'>
+            <format attr='width' field='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:variable:nk]' value='248' />
           </style-rule>
         </style>
         <panes>
@@ -1683,18 +1740,18 @@
             </view>
             <mark class='Bar' />
             <encodings>
-              <text column='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[pcto:sum:value:qk:2]' />
+              <text column='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[pcto:sum:value:qk:3]' />
             </encodings>
             <style>
               <style-rule element='mark'>
-                <format attr='mark-labels-show' value='true' />
                 <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
               </style-rule>
             </style>
           </pane>
         </panes>
-        <rows>[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:album_name_short:nk]</rows>
-        <cols>([federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:variable:nk] * [federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[sum:value:qk])</cols>
+        <rows>[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:variable:nk]</rows>
+        <cols>[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[sum:value:qk]</cols>
       </table>
       <simple-id uuid='{751BBDCB-EB83-4CEA-B8AB-B91D221ED29F}' />
     </worksheet>
@@ -1711,7 +1768,7 @@
             <column-instance column='[variable]' derivation='None' name='[none:variable:nk]' pivot='key' type='nominal' />
             <column datatype='string' name='[run_id]' role='dimension' type='nominal' />
             <column-instance column='[value]' derivation='Sum' name='[sum:value:qk]' pivot='key' type='quantitative' />
-            <column datatype='real' name='[value]' role='measure' type='quantitative' />
+            <column datatype='real' default-format='p0.0%' name='[value]' role='measure' type='quantitative' />
             <column datatype='string' name='[variable]' role='dimension' type='nominal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:run_id:nk]'>
@@ -1872,21 +1929,47 @@
             <column datatype='string' name='[album_name_short]' role='dimension' type='nominal' />
             <column-instance column='[album_name_short]' derivation='None' name='[none:album_name_short:nk]' pivot='key' type='nominal' />
             <column-instance column='[run_id]' derivation='None' name='[none:run_id:nk]' pivot='key' type='nominal' />
-            <column-instance column='[variable]' derivation='None' name='[none:variable:nk]' pivot='key' type='nominal' />
+            <column-instance column='[variable (copy)_2631509613819617280]' derivation='None' name='[none:variable (copy)_2631509613819617280:nk]' pivot='key' type='nominal' />
             <column datatype='string' name='[run_id]' role='dimension' type='nominal' />
             <column-instance column='[value]' derivation='Sum' name='[sum:value:qk]' pivot='key' type='quantitative' />
-            <column datatype='real' name='[value]' role='measure' type='quantitative' />
+            <column datatype='real' default-format='p0.0%' name='[value]' role='measure' type='quantitative' />
+            <column caption='Thema' datatype='string' name='[variable (copy)_2631509613819617280]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='[variable]' />
+              <aliases>
+                <alias key='&quot;dead homy people drug grand rich death god dream angel&quot;' value='Spiritualität, Transzendenz und Vergänglichkeit' />
+                <alias key='&quot;drug tomorrow motherfucker drink night how head white crazy dick&quot;' value='Drogen, Wahnsinn und Exzess' />
+                <alias key='&quot;hand alright dream hat rome top bitch tonight game head&quot;' value='Realität' />
+                <alias key='&quot;heart truth dream song babe door happy birthday hell heaven&quot;' value='Emotionen, Introspektion und Sehnsucht' />
+                <alias key='&quot;kid people party night hoe music girl boy couple bitch&quot;' value='Beziehungen, Party und Exzess' />
+              </aliases>
+            </column>
             <column datatype='string' name='[variable]' role='dimension' type='nominal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:run_id:nk]' filter-group='5'>
-            <groupfilter function='member' level='[none:run_id:nk]' member='&quot;topic_modeling_mac_miller_albums_only_pos_tagged_lemma_K5_alpha0.02_20250312_180337&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[none:run_id:nk]' member='&quot;topic_modeling_mac_miller_albums_only_pos_tagged_lemma_K5_alpha0.02_20250311_153232&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
+          <manual-sort column='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:variable (copy)_2631509613819617280:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;dead homy people drug grand rich death god dream angel&quot;</bucket>
+              <bucket>&quot;kid people party night hoe music girl boy couple bitch&quot;</bucket>
+              <bucket>&quot;heart truth dream song babe door happy birthday hell heaven&quot;</bucket>
+              <bucket>&quot;hand alright dream hat rome top bitch tonight game head&quot;</bucket>
+              <bucket>&quot;drug tomorrow motherfucker drink night how head white crazy dick&quot;</bucket>
+            </dictionary>
+          </manual-sort>
           <slices>
             <column>[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:run_id:nk]</column>
           </slices>
           <aggregation value='true' />
         </view>
-        <style />
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[sum:value:qk]' scope='rows' value='Thematischer Anteil' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view>
@@ -1894,8 +1977,15 @@
             </view>
             <mark class='Automatic' />
             <encodings>
-              <color column='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:variable:nk]' />
+              <color column='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:variable (copy)_2631509613819617280:nk]' />
+              <text column='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[sum:value:qk]' />
             </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
           </pane>
         </panes>
         <rows>[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[sum:value:qk]</rows>
@@ -2102,7 +2192,7 @@
             <column datatype='string' name='[variable]' role='dimension' type='nominal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:run_id:nk]' filter-group='5'>
-            <groupfilter function='member' level='[none:run_id:nk]' member='&quot;topic_modeling_mac_miller_albums_only_pos_tagged_lemma_K5_alpha0.02_20250312_180337&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[none:run_id:nk]' member='&quot;topic_modeling_mac_miller_albums_only_pos_tagged_lemma_K5_alpha0.02_20250311_153232&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <slices>
             <column>[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:run_id:nk]</column>
@@ -2227,8 +2317,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='14' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98000' id='13' param='vert' type-v2='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='100000' id='16' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='15' param='vert' type-v2='layout-flow' w='98400' x='800' y='1000'>
                 <zone fixed-size='280' h='87500' id='9' is-fixed='true' name='POS Tagged adj noun lemma' w='49200' x='800' y='11500'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -2306,6 +2396,78 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
+            <zone h='100000' id='11' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='10' param='vert' type-v2='layout-flow' w='98400' x='800' y='1000'>
+                <zone fixed-size='280' h='98000' id='3' is-fixed='true' name='POS lemma all albums' w='49200' x='800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='98000' id='9' is-fixed='true' name='Sheet 12' w='49200' x='50000' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{EB2CF64C-2D47-4A28-8841-251F72AE99C2}' />
+    </dashboard>
+    <dashboard enable-sort-zone-taborder='true' name='Dashboard 5'>
+      <style />
+      <size maxheight='700' maxwidth='800' minheight='700' minwidth='800' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='97714' id='7' param='horz' type-v2='layout-flow' w='98000' x='1000' y='1143'>
+            <zone h='97714' id='5' type-v2='layout-basic' w='98000' x='1000' y='1143'>
+              <zone h='70459' id='3' name='POS Tagged adj noun lemma' show-title='false' w='98000' x='1000' y='1143'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone fixed-size='160' h='27255' id='6' is-fixed='true' param='vert' type-v2='layout-flow' w='98000' x='1000' y='71602'>
+                <zone h='18143' id='8' name='POS Tagged adj noun lemma' pane-specification-id='0' param='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:variable (copy)_2631509613819617280:nk]' type-v2='color' w='98000' x='1000' y='71602'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
             <zone h='100000' id='2' type-v2='layout-basic' w='100000' x='0' y='0'>
               <zone h='84000' id='1' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000' />
               <zone-style>
@@ -2318,7 +2480,7 @@
           </zones>
         </devicelayout>
       </devicelayouts>
-      <simple-id uuid='{EB2CF64C-2D47-4A28-8841-251F72AE99C2}' />
+      <simple-id uuid='{D4BE0013-A4DD-417F-BDC4-CE6148F172ED}' />
     </dashboard>
     <dashboard enable-sort-zone-taborder='true' name='Normal'>
       <style />
@@ -2374,8 +2536,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='14' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98000' id='13' param='vert' type-v2='layout-flow' w='98770' x='615' y='1000'>
+            <zone h='100000' id='16' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='15' param='vert' type-v2='layout-flow' w='98770' x='615' y='1000'>
                 <zone h='9500' id='12' mode='dropdown' name='K topics normal' param='[federated.0rtaywn0z85efe176cgbx1dauwzk].[none:run_id:nk]' type-v2='filter' values='database' w='98770' x='615' y='1000'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -2481,8 +2643,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='750' minheight='750' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='17' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98000' id='16' param='vert' type-v2='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='100000' id='19' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='18' param='vert' type-v2='layout-flow' w='98400' x='800' y='1000'>
                 <zone forceUpdate='true' h='5250' id='15' type-v2='text' w='98400' x='800' y='1000'>
                   <formatted-text>
                     <run fontsize='22'>POS Tagged adj noun</run>
@@ -2725,12 +2887,24 @@
           </strip>
         </edge>
         <edge name='right'>
-          <strip size='160'>
-            <card pane-specification-id='0' param='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:variable:nk]' type='color' />
+          <strip size='300'>
+            <card pane-specification-id='0' param='[federated.05m8q4j1t4l8lc13p5wrj18eqm4r].[none:variable (copy)_2631509613819617280:nk]' type='color' />
           </strip>
         </edge>
       </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
       <simple-id uuid='{0FA13230-FF7A-4642-A8BA-70F068B60625}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Dashboard 5'>
+      <viewpoints>
+        <viewpoint name='POS Tagged adj noun lemma'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='3' />
+      <simple-id uuid='{34F22AF7-66F2-4317-980E-29BA118CE5CE}' />
     </window>
     <window class='worksheet' name='Topics lemma legend'>
       <cards>
@@ -2772,7 +2946,7 @@
           <zoom type='fit-height' />
         </viewpoint>
       </viewpoints>
-      <active id='12' />
+      <active id='3' />
       <simple-id uuid='{591060D6-A187-4C9F-A14A-EF054F4F8E29}' />
     </window>
     <window class='worksheet' name='Heatmap'>
@@ -2916,7 +3090,7 @@
       </viewpoint>
       <simple-id uuid='{E9AD8EEF-8200-4D70-AF2E-C2DC7B868590}' />
     </window>
-    <window class='dashboard' maximized='true' name='Dashboard 4'>
+    <window class='dashboard' name='Dashboard 4'>
       <viewpoints>
         <viewpoint name='POS lemma all albums'>
           <zoom type='entire-view' />

@@ -141,7 +141,7 @@ library(reshape2)
 library(ggplot2)
 library(pals)
 
-# get mean topic proportions per decade
+# get mean topic proportions per grouping value
 topic_proportion_per_album <- aggregate(theta,
                                         by = list(album_name_short = df_grouped$album_name_short),
                                         mean)
@@ -225,6 +225,21 @@ append_to_csv(topics_long, "analysis_results/topics_long_pos_tagged_adj_noun_lem
 append_to_csv(vizDataFrame, "analysis_results/vizData_long_pos_tagged_adj_noun_lemma.csv")
 
 
+library(ldatuning)
+
+# Angenommen, 'dtm' ist Ihr Dokument-Term-Matrix-Objekt (DTM), das Sie bereits erstellt haben
+result <- FindTopicsNumber(
+  DTM,
+  topics = seq(2, 20, by = 1),
+  metrics = c("Griffiths2004", "CaoJuan2009", "Arun2010", "Deveaud2014"),
+  method = "Gibbs",
+  control = list(seed = 1234),
+  mc.cores = 2L,
+  verbose = TRUE
+)
+
+# Visualisierung der Ergebnisse
+FindTopicsNumber_plot(result)
 
 
 

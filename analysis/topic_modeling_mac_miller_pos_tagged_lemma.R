@@ -219,14 +219,7 @@ append_to_csv <- function(df, csv_path) {
 }
 
 
-append_to_csv(topics_long, "analysis_results/all_lyrics_topics_long_pos_tagged_adj_noun_lemma.csv")
-append_to_csv(vizDataFrame, "analysis_results/all_lyrics_vizData_long_pos_tagged_adj_noun_lemma.csv")
-
-
-
-
-
-
-
+append_to_csv(topics_long, "analysis_results/topics_all_lyrics_long_pos_tagged_adj_noun_lemma.csv")
+append_to_csv(vizDataFrame, "analysis_results/vizData_all_lyrics_long_pos_tagged_adj_noun_lemma.csv")
 
 
